@@ -8,42 +8,46 @@ import apiai
 import json
 import webbrowser as wb
 
-
 # options
 opts = {
-    "alias": ('junona','jun','юнона','юноночка','юня'),
-    "tbr": ('скажи','расскажи','покажи','сколько','произнеси'),
+    "alias": ('junona', 'jun', 'юнона', 'юноночка', 'юня'),
+    "tbr": ('скажи', 'расскажи', 'покажи', 'сколько', 'произнеси'),
     "cmds": {
-        "ctime": ('текущее время','сейчас времени','который час'),
-        "stupid1": ('расскажи анекдот','рассмеши меня','ты знаешь анекдоты'),
-        "search": ('что такое', 'это', 'расскажи о', 'зачем нужен')
+        "ctime": ('текущее время', 'сейчас времени', 'который час', 'время'),
+        "stupid1": ('расскажи анекдот', 'рассмеши меня', 'ты знаешь анекдоты'),
+        "search": ('что такое', 'это', 'расскажи о', 'зачем нужен'),
+        "myMap": ('где я', 'мое местоположение', 'где этот')
     }
 }
- 
+
+
 # functions
 
 def nerual(cmd):
     N = {'cmd': '', 'percent': 0}
-    for c,v in opts['cmds'].items():
- 
+    for c, v in opts['cmds'].items():
+
         for x in v:
             vrt = fuzz.ratio(cmd, x)
             if vrt > N['percent']:
                 N['cmd'] = c
                 N['percent'] = vrt
-    # print(N) # for debug 
+    # print(N)  # for debug
     if N['percent'] > 50:
         return N
     else:
         return {'cmd': '', 'percent': 0}
 
+
 def execute_cmd(cmd, userInput):
     if cmd == 'ctime':
         now = datetime.datetime.now()
         print("Сейчас " + str(now.hour) + ":" + str(now.minute))
-   
+        
+
     elif cmd == 'stupid1':
-         print("Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо")
+        print(
+            "Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо")
 
     elif cmd == 'search':
         userInput = userInput.replace('что такое', '')
@@ -54,14 +58,17 @@ def execute_cmd(cmd, userInput):
         userInput = userInput.strip()
 
         wb.open_new_tab('https://google.com/search?q=' + userInput)
+    elif cmd == 'myMap':
+        wb.open_new_tab("https://www.google.com/maps")
     else:
-        request = apiai.ApiAI('61bbf91b46ff437cbb34719853b33c4d').text_request()
+        request = apiai.ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
         request.lang = 'ru'
         request.session_id = 'cicada3301'
         request.query = userInput
         responseJson = json.loads(request.getresponse().read().decode('utf-8'))
         response = responseJson['result']['fulfillment']['speech']
         print(response)
+
 
 def main():
     userInput = input()
