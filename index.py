@@ -16,7 +16,8 @@ opts = {
         "ctime": ('текущее время', 'сейчас времени', 'который час', 'время'),
         "stupid1": ('расскажи анекдот', 'рассмеши меня', 'ты знаешь анекдоты'),
         "search": ('что такое', 'это', 'расскажи о', 'зачем нужен'),
-        "myMap": ('где я', 'мое местоположение', 'где этот')
+        "myMap": ('где я', 'мое местоположение', 'где этот'),
+        "knock": ('тук', 'тук тук', 'кут тук')
     }
 }
 
@@ -39,11 +40,20 @@ def nerual(cmd):
         return {'cmd': '', 'percent': 0}
 
 
+def execute_cmdKn(cmd):
+    if cmd == 'knock':
+        print("кто я?")
+    elif cmd == 'myMap':
+        wb.open_new_tab("https://www.google.com/maps")
+
+
 def execute_cmd(cmd, userInput):
     if cmd == 'ctime':
         now = datetime.datetime.now()
         print("Сейчас " + str(now.hour) + ":" + str(now.minute))
-        
+
+    elif userInput.lower() == "тим кук":
+        print("гей!")
 
     elif cmd == 'stupid1':
         print(
@@ -60,8 +70,39 @@ def execute_cmd(cmd, userInput):
         wb.open_new_tab('https://google.com/search?q=' + userInput)
     elif cmd == 'myMap':
         wb.open_new_tab("https://www.google.com/maps")
+    elif cmd == 'knock':
+        print("кто там")
+
+        opts1 = {
+            "cmds1": {
+                "myMap": ('кто спрашивает?', 'якорь'),
+                "knock": ('тук', 'тук тук', 'кут тук')
+            }
+        }
+
+        def nerual1(cmd):
+            N = {'cmd2': '', 'percent': 0}
+            for c, v in opts1['cmds1'].items():
+
+                for x in v:
+                    vrt = fuzz.ratio(cmd, x)
+                if vrt > N['percent']:
+                    N['cmd2'] = c
+                    N['percent'] = vrt
+            print(N)  # for debug
+            if N['percent'] > 50:
+                return N
+            else:
+                return {'cmd2': '', 'percent': 0}
+
+        userInput = input()
+
+        cmd2 = nerual(userInput)
+        return execute_cmdKn(cmd2['cmd'])
+
     else:
-        request = apiai.ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
+        request = apiai.ApiAI(
+            '12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
         request.lang = 'ru'
         request.session_id = 'cicada3301'
         request.query = userInput
