@@ -21,7 +21,6 @@ opts = {
     }
 }
 
-
 # functions
 
 def nerual(cmd):
@@ -44,7 +43,7 @@ def execute_cmdKn(cmd):
     if cmd == 'knock':
         print("кто я?")
     elif cmd == 'myMap':
-        wb.open_new_tab("https://www.google.com/maps")
+        print("я")
 
 
 def execute_cmd(cmd, userInput):
@@ -75,8 +74,7 @@ def execute_cmd(cmd, userInput):
 
         opts1 = {
             "cmds1": {
-                "myMap": ('кто спрашивает?', 'якорь'),
-                "knock": ('тук', 'тук тук', 'кут тук')
+                "myMap": ('кто спрашивает?', 'кто спрашивает')
             }
         }
 
@@ -97,8 +95,9 @@ def execute_cmd(cmd, userInput):
 
         userInput = input()
 
-        cmd2 = nerual(userInput)
-        return execute_cmdKn(cmd2['cmd'])
+        cmd2 = nerual1(userInput)
+        return execute_cmdKn(cmd2['cmd2'])
+
 
     else:
         request = apiai.ApiAI(
@@ -119,6 +118,6 @@ def main():
 
 
 # start
-print("Привет, я Юнона. Готова выполнить любые задачи")
+print("Привет, я Юнона. Со мной весело")
 while True:
     main()
