@@ -8,18 +8,14 @@ import apiai
 import json
 import webbrowser as wb
 
+
 # options
-opts = {
-    "alias": ('junona', 'jun', 'юнона', 'юноночка', 'юня'),
-    "tbr": ('скажи', 'расскажи', 'покажи', 'сколько', 'произнеси'),
-    "cmds": {
-        "ctime": ('текущее время', 'сейчас времени', 'который час', 'время'),
-        "stupid1": ('расскажи анекдот', 'рассмеши меня', 'ты знаешь анекдоты'),
-        "search": ('что такое', 'это', 'расскажи о', 'зачем нужен'),
-        "myMap": ('где я', 'мое местоположение', 'где этот'),
-        "knock": ('тук', 'тук тук', 'кут тук')
-    }
-}
+
+
+
+filename = 'opts.json'
+with open(filename) as f:
+    opts = json.load(f)
 
 # functions
 
@@ -100,8 +96,7 @@ def execute_cmd(cmd, userInput):
 
 
     else:
-        request = apiai.ApiAI(
-            '12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
+        request = apiai.ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
         request.lang = 'ru'
         request.session_id = 'cicada3301'
         request.query = userInput
