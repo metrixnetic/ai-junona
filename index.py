@@ -16,6 +16,14 @@ with open(filename) as f:
     opts = json.load(f)
 
 # functions
+def fullStrip(userInput):
+        userInput = userInput.replace('что такое', '')
+        userInput = userInput.replace('это', '')
+        userInput = userInput.replace('расскажи о', '')
+        userInput = userInput.replace('зачем нужен', '')
+        userInput = userInput.replace('кто такие', '')
+        userInput = userInput.strip()
+        return userInput
 
 def nerual(cmd):
     N = {'cmd': '', 'percent': 0}
@@ -33,13 +41,6 @@ def nerual(cmd):
         return {'cmd': '', 'percent': 0}
 
 
-def execute_cmdKn(cmd):
-    if cmd == 'knock':
-        print("кто я?")
-    elif cmd == 'myMap':
-        print("я")
-
-
 def execute_cmd(cmd, userInput):
     if cmd == 'ctime':
         now = datetime.datetime.now()
@@ -49,11 +50,16 @@ def execute_cmd(cmd, userInput):
         print("гей!")
 
     elif cmd == 'stupid1':
+<<<<<<< HEAD
         joke = ['Шутка!',
+=======
+        jokes = ['Шутка!',
+>>>>>>> b26b73cff2c99e58e305403ee2f26006393acec2
                 'Ты приёмный',
                 'Какие числа не использует гей?\nНАТУРАЛЬНЫЕ:)',
                 'Что общего между шутками и людьми?\nБольшинству не нравятся черные',
                 'Знаешь почему цыгане воруют лошадей?\nПотому что это их конёк',
+<<<<<<< HEAD
                 'Что начнется в пустыне Сахара если к власти придут коммунисты?\nДефицит песка.'
                 'Как то раз наркоман купил закладку с солями но случился ненаход\nОн так и не понял в чем соль'
                 'Как можно назвать не красивую грудь?\nОтвратитьки.'
@@ -73,47 +79,35 @@ def execute_cmd(cmd, userInput):
                 ]
         abc = random.choice(joke)
         print(abc)
+=======
+                'Что начнется в пустыне Сахара если к власти придут коммунисты?\nДефицит песка.',
+                'Как то раз наркоман купил закладку с солями но случился ненаход\nОн так и не понял в чем соль',
+                'Как можно назвать не красивую грудь?\nОтвратитьки.',
+                'Ставлю сетку на окно, чтобы ни одна тварь не залетела\nДевушка показала две полоски не смотря на сетку',
+                'У моей девушки красивые волосы\nЖаль что на жопе',
+                'Я настолько хач, что у меня даже ухо стреляет.',
+                'Что общего между катанием на велосипеде и первым сексом?\nИ там и там отчим держит тебя за плечи',
+                'Какое домашнее животное у мэра Москвы?\nСобяка',
+                'Как понять, что вы летите над Россией?\nВсё небо в воздушных ямах.',
+                '- Подсудимый, на почве чего вы убили этого мужчину?/n- На чернозёме.',
+                'Почему скелеты плохо врут?\nПотому что их видно насквозь',
+                'Протер окно сухой тряпкой, чтобы не было разводов.\nНо батя все равно ушел из семьи',
+                'Как называют поляка, который очень сильно любит панд?\nПан Дофил',
+                '18 лет: выскакивает сердечко, когда влюбляешься\n30 лет: выскакивает колено, когда чихаешь',
+                'Почему я никогда не уступаю место бабкам?\nПотому что бабки, это не главное',
+                "Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо"
+                ]
+
+        joke = random.choice(jokes)
+        print(joke)
+>>>>>>> b26b73cff2c99e58e305403ee2f26006393acec2
 
     elif cmd == 'search':
-        userInput = userInput.replace('что такое', '')
-        userInput = userInput.replace('это', '')
-        userInput = userInput.replace('расскажи о', '')
-        userInput = userInput.replace('зачем нужен', '')
-        userInput = userInput.replace('кто такие', '')
-        userInput = userInput.strip()
+        userInput = fullStrip(userInput)
 
         wb.open_new_tab('https://google.com/search?q=' + userInput)
     elif cmd == 'myMap':
         wb.open_new_tab("https://www.google.com/maps")
-    elif cmd == 'knock':
-        print("кто там")
-
-        opts1 = {
-            "cmds1": {
-                "myMap": ('кто спрашивает?', 'кто спрашивает')
-            }
-        }
-
-        def nerual1(cmd):
-            N = {'cmd2': '', 'percent': 0}
-            for c, v in opts1['cmds1'].items():
-
-                for x in v:
-                    vrt = fuzz.ratio(cmd, x)
-                if vrt > N['percent']:
-                    N['cmd2'] = c
-                    N['percent'] = vrt
-            print(N)  # for debug
-            if N['percent'] > 50:
-                return N
-            else:
-                return {'cmd2': '', 'percent': 0}
-
-        userInput = input()
-
-        cmd2 = nerual1(userInput)
-        return execute_cmdKn(cmd2['cmd2'])
-
 
     else:
         request = apiai.ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
