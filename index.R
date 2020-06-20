@@ -1,6 +1,9 @@
 library(reticulate) # spcial for dialogflow
 library(fuzzywuzzyR)
+library(rjson)
 import apiai
+
+cmd  <- fromJSON(file = "opts.json")
 
 nerual  <- function (cmd) { # TODO: refactor to vectoriztion
 
