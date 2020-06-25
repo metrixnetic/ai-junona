@@ -1,6 +1,7 @@
 library(reticulate) # spcial for dialogflow
 library(fuzzywuzzyR)
 library(rjson)
+import apiai
 
 opts  <- fromJSON(file = "opts.json")
 
@@ -40,14 +41,17 @@ nerual  <- function (cmd) { # TODO: refactor to vectoriztion
 }
 
 execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
+
     z <- list()
+
     z[[which(cmd == "time")]] <- function {
         now = now()
         print("Сейчас", + now)
     }
-     else if (cmd == 'joke') {
+
+    z[[which(cmd == 'joke')]] <- function { 
     
-    joke  <-  c('Шутка!',
+        joke  <-  c('Шутка!',
 
                 'Ты приёмный',
 
@@ -92,8 +96,9 @@ execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
             )
 
         print(random.choice(joke)) # TODO: fix 
+    }
 
-    } else if (cmd == 'search') {
+     z[[which(cmd == 'search')]] {
         # TODO: FIX
         userInput = userInput.replace('что такое', '') 
         userInput = userInput.replace('это', '')
@@ -106,11 +111,14 @@ execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
 
         browseURL('https://google.com/search?q=', userInput, browser="firefox")
 
-    } else if (cmd == 'myMap') {
+    }
+
+     z[[which(cmd == 'myMap')]] {
         
         browseURL("https://www.google.com/maps", browser="firefox")
 
-    } else {
+    }
+     else {
         # TODO: dont fix, it working
         request = apiai.ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
 
