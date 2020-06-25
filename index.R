@@ -3,7 +3,7 @@ library(fuzzywuzzyR)
 library(rjson)
 import apiai
 
-cmd  <- fromJSON(file = "opts.json")
+opts  <- fromJSON(file = "opts.json")
 
 nerual  <- function (cmd) { # TODO: refactor to vectoriztion
 
@@ -41,11 +41,12 @@ nerual  <- function (cmd) { # TODO: refactor to vectoriztion
 }
 
 execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
-
-    if (cmd == 'time') {
-        now = datetime.now() # TODO: fix
-        print("Сейчас", + now) # TODO: fix
-    } else if (cmd == 'joke') {
+    z <- list()
+    z[[which(cmd == "time")]] <- function {
+        now = now()
+        print("Сейчас", + now)
+    }
+     else if (cmd == 'joke') {
     
     joke  <-  c('Шутка!',
 
