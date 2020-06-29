@@ -44,8 +44,8 @@ nerual  <- function (cmd) { # TODO: refactor to vectoriztion
 execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
 
     if (cmd == 'time') {
-        now = today() # TODO: fix
-        print("Сейчас", + now) # TODO: fix
+        now = today()
+        print("Сейчас", + now) 
     } else if (cmd == 'joke') {
     
     joke  <-  c('Шутка!',
