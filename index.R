@@ -92,7 +92,7 @@ execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
 
             )
 
-        print(random.choice(joke)) # TODO: fix 
+        print(sample(joke, 1)) 
 
     } else if (cmd == 'search') {
         # TODO: FIX
