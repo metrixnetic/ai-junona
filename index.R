@@ -1,8 +1,6 @@
 library(reticulate) # spcial for dialogflow
 library(fuzzywuzzyR)
 library(rjson)
-library(lubrydate) # TODO: fix
-library(magrittr)
 
 opts  <- fromJSON(file = "opts.json")
 
@@ -41,11 +39,11 @@ nerual  <- function (cmd) { # TODO: refactor to vectoriztion
 
 }
 
-execute_cmd  <- function(cmd, userInput) { # TODO: refactor to vectorization
+execute_cmd  <- function(cmd, userInput) {
 
     if (cmd == 'time') {
-        now = today()
-        print("Сейчас", + now) 
+        now <- Sys.time()
+        print(paste("Сейчас", now))
     } else if (cmd == 'joke') {
     
     joke  <-  c('Шутка!',
