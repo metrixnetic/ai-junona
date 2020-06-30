@@ -1,8 +1,6 @@
 library(reticulate) # spcial for dialogflow
 library(fuzzywuzzyR)
 library(rjson)
-library(lubrydate)
-library(magrittr)
 
 opts  <- fromJSON(file = "opts.json")
 
