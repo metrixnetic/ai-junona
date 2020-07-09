@@ -94,12 +94,12 @@ execute_cmd  <- function(cmd, userInput) {
 
     } else if (cmd == 'search') {
         # TODO: FIX
-        userInput = userInput.replace('что такое', '') 
-        userInput = userInput.replace('это', '')
-        userInput = userInput.replace('расскажи о', '')
-        userInput = userInput.replace('зачем нужен', '')
-        userInput = userInput.replace('кто такие', '')
-        userInput = userInput.strip()
+        userInput = replace('что такое', '') 
+        userInput = replace('это', '')
+        userInput = replace('расскажи о', '')
+        userInput = replace('зачем нужен', '')
+        userInput = replace('кто такие', '')
+        userInput = strip()
         # TODO: FIX
 
 
