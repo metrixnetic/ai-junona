@@ -99,7 +99,8 @@ execute_cmd  <- function(cmd, userInput) {
         userInput = replace('расскажи о', '')
         userInput = replace('зачем нужен', '')
         userInput = replace('кто такие', '')
-        userInput = strip()
+        
+
         # TODO: FIX
 
 
