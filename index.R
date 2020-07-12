@@ -6,40 +6,40 @@ library(stringi)
 
 opts  <- fromJSON(file = "opts.json")
 
-nerual  <- function (cmd) { # TODO: refactor to vectoriztion
+nerual  <- function (cmd) {
 
-    N  <-  {'cmd': '', 'percent': 0} # TODO: fix it out
+    N  <-  list(cmd = '',
+                percent = 0) 
     b  <- 0
     v  <- 0
 
-    for (b, v in opts['cmds']) { # TODO: fix 
+    for (b in opts$cmds) { 
         
         x  <- 0
 
-        for (x in v): # TODO: refactor
+        for (x in v){
 
-            vrt = fuzz.ratio(cmd, x) # TODO: refactor
+            vrt = ratio(cmd, x) 
 
-            if (vrt > N['percent']) { # TODO: refactor
+            if (vrt > N$percent) {
 
-                N['cmd'] = c
+                N$cmd = c
 
-                N['percent'] = vrt
+                N$percent = vrt
             }
+        }
     }
     # print(N)  # for debug
 
-    if (N['percent'] > 50) {
+    if (N$percent > 50) {
 
         return(N)
 
     } else {
 
-        return ({'cmd': '', 'percent': 0}) # TODO: fix
+        return("")
 
     }
-
-}
 
 execute_cmd  <- function(cmd, userInput) {
 
