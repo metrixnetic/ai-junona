@@ -1,6 +1,8 @@
 library(reticulate) # spcial for dialogflow
 library(fuzzywuzzyR)
 library(rjson)
+library(tidyverse)
+library(stringi)
 
 opts  <- fromJSON(file = "opts.json")
 
@@ -57,7 +59,6 @@ execute_cmd  <- function(cmd, userInput) {
                 'Знаешь почему цыгане воруют лошадей?\nПотому что это их конёк',
 
                 'Что начнется в пустыне Сахара если к власти придут коммунисты?\nДефицит песка.',
-
                 'Как то раз наркоман купил закладку с солями но случился ненаход\nОн так и не понял в чем соль',
 
                 'Как можно назвать не красивую грудь?\nОтвратитьки.',
@@ -93,18 +94,21 @@ execute_cmd  <- function(cmd, userInput) {
         print(sample(joke, 1)) 
 
     } else if (cmd == 'search') {
-        # TODO: FIX
-        userInput = replace('что такое', '') 
-        userInput = replace('это', '')
-        userInput = replace('расскажи о', '')
-        userInput = replace('зачем нужен', '')
-        userInput = replace('кто такие', '')
-        
 
-        # TODO: FIX
+        userInput <- str_split(userInput, " ") TODO: FIX
+        unls <- unlist(userInput)
 
+        unls[userInput[[1]] == "это"] <- ''
+        unls[userInput[[1]] == "раскажи о"]  <- ''
+        unls[userInput[[1]] == "зачем нужен"]  <- ''
+        unls[userInput[[1]] == "кто такие"]  <- ''
+        unsl[userInput[[1]] == "что такое"]  <- ''
 
-        browseURL('https://google.com/search?q=', userInput, browser="firefox")
+        unls  <-  paste(z, collapse = ' ')
+
+        unls  <- trimws(z)
+     
+        browseURL('https://google.com/search?q=', unls, browser="firefox")
 
     } else if (cmd == 'myMap') {
         
