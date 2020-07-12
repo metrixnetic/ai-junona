@@ -4,6 +4,11 @@ library(rjson)
 library(tidyverse)
 library(stringi)
 
+use_python("/usr/bin/python3")
+
+apiai  <- import("apiai")
+json  <- import("json")
+
 opts  <- fromJSON(file = "opts.json")
 
 nerual  <- function (cmd) {
@@ -116,21 +121,21 @@ execute_cmd  <- function(cmd, userInput) {
         browseURL("https://www.google.com/maps", browser="firefox")
 
     } else {
-        # TODO: dont fix, it working
-        request = apiai.ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61').text_request()
+        
+        request  <- apiai$ApiAI('12a6fe58bfa34f7cb950c2c3b5de8e61')$text_request()
 
-        request.lang = 'ru'
+        request$lang <- 'ru'
 
-        request.session_id = 'cicada3301'
+        request$session_id <- 'cicada3301'
 
-        request.query = userInput
+        request$query  <- userInput
 
-        responseJson = json.loads(request.getresponse().read().decode('utf-8'))
+        responseJson <- json$loads(request$getresponse()$read()$decode('utf-8'))
 
-        response = responseJson['result']['fulfillment']['speech']
+        response <- responseJson$result$fulfillment$messages[[1]]$speech
 
         print(response)
-
+        
     }
 
 }
