@@ -8,6 +8,7 @@ use_python("/usr/bin/python3")
 
 apiai  <- import("apiai")
 json  <- import("json")
+fuzzywuzzy  <- import("fuzzywuzzy")
 
 opts  <- fromJSON(file = "opts.json")
 
@@ -24,13 +25,13 @@ nerual  <- function (cmd) {
 
         for (x in v){
 
-            vrt = ratio(cmd, x) 
+            vrt = fuzzywuzzy$fuzzywuzzy.ratio(cmd, x) 
 
             if (vrt > N$percent) {
 
                 N$cmd = c
 
-                N$percent = vrt
+               N$percent = vrt
             }
         }
     }
@@ -45,6 +46,7 @@ nerual  <- function (cmd) {
         return("")
 
     }
+}
 
 execute_cmd  <- function(cmd, userInput) {
 
@@ -101,7 +103,7 @@ execute_cmd  <- function(cmd, userInput) {
 
     } else if (cmd == 'search') {
 
-        userInput <- str_split(userInput, " ") TODO: FIX
+        userInput <- str_split(userInput, " ")# TODO: FIX
         unls <- unlist(userInput)
 
         unls[userInput[[1]] == "это"] <- ''
@@ -145,12 +147,12 @@ main <- function() {
     userInput <- readline()
 
     cmd  <- nerual(userInput)
-    return(execute_cmd(cmd["cmd"], userInput))
+    return(execute_cmd(cmd$cmd, userInput))
 
 }
 
 # start
 print("Привет, я Юнона. Со мной весело")
-while (True) {
+while (1) {
     main()
 }
