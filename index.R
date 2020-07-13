@@ -8,8 +8,6 @@ use_python("/usr/bin/python3")
 
 apiai  <- import("apiai")
 json  <- import("json")
-fuzzywuzzy  <- import("fuzzywuzzy")
-
 opts  <- fromJSON(file = "opts.json")
 
 nerual  <- function (cmd) {
@@ -25,7 +23,11 @@ nerual  <- function (cmd) {
 
         for (x in v){
 
-            vrt = fuzzywuzzy$fuzzywuzzy.ratio(cmd, x) 
+
+            fuz  <- FuzzMatcher$new()
+
+            vrt <- fuz$Ratio(cmd, x)
+
 
             if (vrt > N$percent) {
 
