@@ -13,9 +13,7 @@ opts  <- fromJSON(file = "opts.json")
 nerual  <- function (cmd) {
 
     N  <-  list(cmd = '',
-                percent = 0) 
-    b  <- 0
-    v  <- 0
+                percent = 0)
 
     for (b in opts$cmds) { 
         
