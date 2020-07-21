@@ -1,4 +1,4 @@
-library(reticulate) # spcial for dialogflow
+library(reticulate)
 library(fuzzywuzzyR)
 library(rjson)
 library(tidyverse)
