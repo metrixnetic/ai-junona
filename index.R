@@ -153,6 +153,7 @@ main <- function() {
 
 # start
 print("Привет, я Юнона. Со мной весело")
+
 while (1) {
     main()
 }
