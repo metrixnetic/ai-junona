@@ -4,6 +4,8 @@ library(rjson)
 library(tidyverse)
 library(stringi)
 
+# Edgar CODE NOW!!!!
+
 use_python("/usr/bin/python3")
 
 apiai  <- import("apiai")
