@@ -4,8 +4,6 @@ library(rjson)
 library(tidyverse)
 library(stringi)
 
-#
-
 use_python("/usr/bin/python3")
 
 apiai  <- import("apiai")
