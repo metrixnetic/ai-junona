@@ -12,47 +12,46 @@ apiai  <- import("apiai")
 json  <- import("json")
 opts  <- fromJSON(file = "opts.json")
 
-nerual  <- function (cmd) {
-
-    N  <-  list(cmd = '',
-                percent = 0)
-
-    for (b in opts$cmds) { 
-        
-        x  <- 0
-
-        for (x in v){
-
-
-            fuz  <- FuzzMatcher$new()
-
-            vrt <- fuz$Ratio(cmd, x)
-
-
-            if (vrt > N$percent) {
-
-                N$cmd = c
-
-               N$percent = vrt
+ nerual <- function (cmd) {
+ 
+        N  <-  list(cmd = '',
+                    percent = 0)
+ 
+        for (x in names(opts$cmds)) {
+ 
+            for (b in opts$cmds[[x]]){
+ 
+ 
+                fuz <- FuzzMatcher$new()
+ 
+                vrt <- fuz$WRATIO(cmd, b)
+ 
+                if (vrt > N$percent) {
+ 
+                    N$percent  <- vrt
+                    N$cmd  <- x
+ 
+                }
             }
         }
+ 
+ 
+        if (N$percent > 50) {
+ 
+            return(N$cmd)
+ 
+        } else {
+ 
+            return("")
+ 
+        }
     }
-    # print(N)  # for debug
 
-    if (N$percent > 50) {
 
-        return(N)
-
-    } else {
-
-        return("")
-
-    }
-}
 
 execute_cmd  <- function(cmd, userInput) {
 
-    if (cmd == 'time') {
+    if (cmd == 'ctime') {
         now <- Sys.time()
         print(paste("Сейчас", now))
     } else if (cmd == 'joke') {
@@ -85,7 +84,7 @@ execute_cmd  <- function(cmd, userInput) {
 
                 'Как понять, что вы летите над Россией?\nВсё небо в воздушных ямах.',
 
-                '- Подсудимый, на почве чего вы убили этого мужчину?/n- На чернозёме.',
+                '- Подсудимый, на почве чего вы убили этого мужчину?\n- На чернозёме.',
 
                 'Почему скелеты плохо врут?\nПотому что их видно насквозь',
 
@@ -97,11 +96,11 @@ execute_cmd  <- function(cmd, userInput) {
 
                 'Почему я никогда не уступаю место бабкам?\nПотому что бабки, это не главное',
 
-                "Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо"
+                "Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо")
 
-            )
+        
 
-        print(sample(joke, 1)) 
+                print(sample(joke, 1)) 
 
     } else if (cmd == 'search') {
 
@@ -112,13 +111,13 @@ execute_cmd  <- function(cmd, userInput) {
         unls[userInput[[1]] == "раскажи о"]  <- ''
         unls[userInput[[1]] == "зачем нужен"]  <- ''
         unls[userInput[[1]] == "кто такие"]  <- ''
-        unsl[userInput[[1]] == "что такое"]  <- ''
+        unls[userInput[[1]] == "что такое"]  <- ''
 
-        unls  <-  paste(z, collapse = ' ')
+        unls  <-  paste(unls, collapse = ' ')
 
-        unls  <- trimws(z)
+        unls  <- trimws(unls)
      
-        browseURL('https://google.com/search?q=', unls, browser="firefox")
+        browseURL(paste0('https://google.com/search?q=', unls), browser="firefox")
 
     } else if (cmd == 'myMap') {
         
@@ -149,7 +148,7 @@ main <- function() {
     userInput <- readline()
 
     cmd  <- nerual(userInput)
-    return(execute_cmd(cmd$cmd, userInput))
+    return(execute_cmd(cmd, userInput))
 
 }
 
