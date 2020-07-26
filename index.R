@@ -4,7 +4,7 @@ library(rjson)
 library(tidyverse)
 library(stringi)
 
-# Edgar CODE NOW!!!!!
+# Edgar CODE NOW!!!!
 
 use_python("/usr/bin/python3")
 
