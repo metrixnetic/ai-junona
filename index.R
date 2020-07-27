@@ -10,42 +10,58 @@ apiai  <- import("apiai")
 json  <- import("json")
 opts  <- fromJSON(file = "opts.json")
 
- nerual <- function (cmd) {
- 
+nerual <- function (cmd) {
+
         N  <-  list(cmd = '',
                     percent = 0)
- 
-        for (x in names(opts$cmds)) {
- 
-            for (b in opts$cmds[[x]]){
- 
- 
+        i  <- 0
+
+        x  <- 0
+
+        while (i < length(names(opts$cmd))) {
+
+            i  <- i + 1
+
+            x  <- names(opts$cmd[i])
+
+            i1  <- 0
+
+            b  <- 0
+
+            while (i1 < length(opts$cmds[[x]])){
+
+                i1  <- i1 +1
+
+                b  <- opts$cmds[[x]][i]
+
                 fuz <- FuzzMatcher$new()
- 
+
                 vrt <- fuz$WRATIO(cmd, b)
- 
+
+
                 if (vrt > N$percent) {
- 
+
                     N$percent  <- vrt
-                    N$cmd  <- x
- 
+
+                    N$cmd  <- x 
                 }
+
             }
+
         }
- 
- 
+
+
         if (N$percent > 50) {
- 
+
             return(N$cmd)
- 
+
         } else {
- 
-            return("")
- 
-        }
+               
+            return("") 
+
     }
 
-
+}
 
 execute_cmd  <- function(cmd, userInput) {
 
@@ -106,13 +122,13 @@ execute_cmd  <- function(cmd, userInput) {
 
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "это" &&
-             userInput[[1]] == "раскажи"]
-             userInput[[1]] == "зачем"]
-        unls[userInput[[1]] == "кто"]
-        unls[userInput[[1]] == "что"]
-        unls[userInput[[1]] == "такие"]
-        unls[userInput[[1]] == "такое"] <-''
+        unls[userInput[[1]] == "это"     |
+             userInput[[1]] == "раскажи" |
+             userInput[[1]] == "зачем"   |
+             userInput[[1]] == "кто"     |
+             userInput[[1]] == "что"     |
+             userInput[[1]] == "такие"   |
+             userInput[[1]] == "такое"]  <- ''
 
         unls  <-  paste(unls, collapse = ' ')
 
