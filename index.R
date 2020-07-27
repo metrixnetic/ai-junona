@@ -106,13 +106,13 @@ execute_cmd  <- function(cmd, userInput) {
 
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "это" &&
-             userInput[[1]] == "раскажи"]
-             userInput[[1]] == "зачем"]
-        unls[userInput[[1]] == "кто"]
-        unls[userInput[[1]] == "что"]
-        unls[userInput[[1]] == "такие"]
-        unls[userInput[[1]] == "такое"] <-''
+        unls[userInput[[1]] == "это"     |
+             userInput[[1]] == "раскажи" |
+             userInput[[1]] == "зачем"   |
+             userInput[[1]] == "кто"     |
+             userInput[[1]] == "что"     |
+             userInput[[1]] == "такие"   |
+             userInput[[1]] == "такое"]  <- ''
 
         unls  <-  paste(unls, collapse = ' ')
 
