@@ -97,25 +97,29 @@ execute_cmd  <- function(cmd, userInput) {
                 "Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо")
 
         
-
-                print(sample(joke, 1)) 
+                cat(paste0(sample(joke, 1), "\n"))
+    
 
     } else if (cmd == 'search') {
 
-        userInput <- str_split(userInput, " ")# TODO: FIX
+        userInput <- str_split(userInput, " ")
+
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "это"] <- ''
-        unls[userInput[[1]] == "раскажи о"]  <- ''
-        unls[userInput[[1]] == "зачем нужен"]  <- ''
-        unls[userInput[[1]] == "кто такие"]  <- ''
-        unls[userInput[[1]] == "что такое"]  <- ''
+        unls[userInput[[1]] == "это" &&
+             userInput[[1]] == "раскажи"]
+             userInput[[1]] == "зачем"]
+        unls[userInput[[1]] == "кто"]
+        unls[userInput[[1]] == "что"]
+        unls[userInput[[1]] == "такие"]
+        unls[userInput[[1]] == "такое"] <-''
 
         unls  <-  paste(unls, collapse = ' ')
 
         unls  <- trimws(unls)
-     
+
         browseURL(paste0('https://google.com/search?q=', unls), browser="firefox")
+
 
     } else if (cmd == 'myMap') {
         
