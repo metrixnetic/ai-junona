@@ -38,7 +38,6 @@ nerual <- function (cmd) {
 
                 vrt <- fuz$WRATIO(cmd, b)
 
-
                 if (vrt > N$percent) {
 
                     N$percent  <- vrt
