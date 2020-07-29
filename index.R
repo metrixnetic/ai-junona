@@ -21,17 +21,14 @@ nerual <- function (cmd) {
         while (i < length(names(opts$cmd))) {
 
             i  <- i + 1
-
             x  <- names(opts$cmd[i])
 
             i1  <- 0
-
             b  <- 0
 
             while (i1 < length(opts$cmds[[x]])){
 
                 i1  <- i1 +1
-
                 b  <- opts$cmds[[x]][i]
 
                 fuz <- FuzzMatcher$new()
