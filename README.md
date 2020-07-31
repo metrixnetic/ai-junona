@@ -1,2 +1,2 @@
-# TODO end up before 31
-- [ ] - закончить рекуррентную нейросеть
+# TODO end up before 2
+- [ ] - 
