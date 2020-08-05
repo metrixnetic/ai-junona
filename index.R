@@ -136,6 +136,10 @@ execute_cmd  <- function(cmd, userInput) {
     } else if (cmd == 'myMap') {
         
         browseURL("https://www.google.com/maps", browser="firefox")
+            
+    } else if (cmd == 'weather') {
+        
+        browseURL("https://www.accuweather.com/", browser="firefox")
 
     } else {
         
