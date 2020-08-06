@@ -132,7 +132,6 @@ execute_cmd  <- function(cmd, userInput) {
 
         browseURL(paste0('https://google.com/search?q=', unls), browser="firefox")
 
-
     } else if (cmd == 'myMap') {
         
         browseURL("https://www.google.com/maps", browser="firefox")
@@ -140,6 +139,21 @@ execute_cmd  <- function(cmd, userInput) {
     } else if (cmd == 'weather') {
         
         browseURL("https://www.accuweather.com/", browser="firefox")
+            
+    } else if (cmd == 'calculator') {
+            
+        userInput <- str_split(userInput, " ")
+
+        calcu <- unlist(userInput)
+            
+        calcu[userInput[[1]] == "сколько"] <- ''     
+        calcu[userInput[[1]] == "будет"] <- ''
+            
+        calcu <- paste(calcu, collapse = ' ')
+            
+        calcu <- trimws(calcu)
+            
+        print(calcu)
 
     } else {
         
