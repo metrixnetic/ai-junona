@@ -11,6 +11,7 @@ import random
 
 # options
 
+
 filename = 'opts.json'
 with open(filename) as f:
     opts = json.load(f)
