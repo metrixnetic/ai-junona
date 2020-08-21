@@ -4,10 +4,13 @@ library(rjson)
 library(tidyverse)
 library(stringi)
 
-use_python("/usr/bin/python3")
+use_python("./.local/lib/python3.8/site-packages")
+
+now <- Sys.time()
 
 apiai  <- import("apiai")
 json  <- import("json")
+
 opts  <- fromJSON(file = "opts.json")
 
 nerual <- function (cmd) {
@@ -62,8 +65,9 @@ nerual <- function (cmd) {
 execute_cmd  <- function(cmd, userInput) {
 
     if (cmd == 'ctime') {
-        now <- Sys.time()
+
         print(paste("Сейчас", now))
+
     } else if (cmd == 'joke') {
     
     joke  <-  c('Шутка!',
@@ -139,7 +143,11 @@ execute_cmd  <- function(cmd, userInput) {
     } else if (cmd == 'weather') {
         
         browseURL("https://www.accuweather.com/", browser="firefox")
-            
+
+    } else if (cmd == 'kushac'){
+
+        browseURL(paste0('https://google.com/search?q=', рестораны), browser="firefox")                             
+
     } else if (cmd == 'calculator') {
             
         userInput <- str_split(userInput, " ")
@@ -185,7 +193,24 @@ main <- function() {
 }
 
 # start
-print("Привет, я Юнона. Со мной весело")
+tmr <- format(Sys.time(), "%H")
+tmr <- as.integer(tmr)
+
+p <- list(0, 0)
+
+names(p) <- c(0,1)
+
+#morning
+p[[paste0(as.integer(tmr < 12 & tmr >= 5))]] <- c("Доброе утро", "Я готова служить вам этим утром", "Доброго утра, милорд", "Поздравляю, вы пережили ночь", "Как поживаете?", "Чашечку кофе?")
+#day
+p[[paste0(as.integer(tmr >= 12 & tmr < 18))]] <- c("Добрый день", "Что будете делать этим днем?", "Чем я могу помочь?", "Вы уже пообедали?","   Приветствую вас этим днем", "Здравия желаю")
+#evening
+p[[paste0(as.integer(tmr >= 18 & tmr < 24))]] <- c("Добрый вечер", "Хороший вечер, не правда ли?", "Вы уже поужинали?", "Привет, я подсяду?","Рада видеть вас этим вечером", "Мое почтение", "Чашечку чая?")
+#night
+p[[paste0(as.integer(tmr >= 0 & tmr < 5))]] <- c("Доброй ночи", "Зачем вы меня разбудили?", "Кому нужна помощь ночью?", "Я не сплю!", "У вас сбит режим сна?", "Вы ночной человек?")
+
+print(paste0(sample(p$'1', 1)))
+
 
 while (1) {
     main()
