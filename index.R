@@ -4,10 +4,14 @@ library(rjson)
 library(tidyverse)
 library(stringi)
 
-use_python("/usr/bin/python3")
+use_python("./.local/lib/python3.8/site-packages")
+
+now <- Sys.time()
+date <- Sys.Date()
 
 apiai  <- import("apiai")
 json  <- import("json")
+
 opts  <- fromJSON(file = "opts.json")
 
 nerual <- function (cmd) {
@@ -62,8 +66,9 @@ nerual <- function (cmd) {
 execute_cmd  <- function(cmd, userInput) {
 
     if (cmd == 'ctime') {
-        now <- Sys.time()
+
         print(paste("Сейчас", now))
+
     } else if (cmd == 'joke') {
     
     joke  <-  c('Шутка!',
@@ -132,10 +137,36 @@ execute_cmd  <- function(cmd, userInput) {
 
         browseURL(paste0('https://google.com/search?q=', unls), browser="firefox")
 
-
     } else if (cmd == 'myMap') {
         
         browseURL("https://www.google.com/maps", browser="firefox")
+            
+    } else if (cmd == 'weather') {
+        
+        browseURL("https://www.accuweather.com/", browser="firefox")
+
+    } else if (cmd == 'kushac'){
+
+        browseURL(paste0('https://google.com/search?q=', рестораны), browser="firefox")      
+            
+    } else if (cmd == 'onlydate'){
+            
+        print(paste("Сегодня", date))
+
+    } else if (cmd == 'calculator') {
+            
+        userInput <- str_split(userInput, " ")
+
+        calcu <- unlist(userInput)
+            
+        calcu[userInput[[1]] == "сколько"] <- ''     
+        calcu[userInput[[1]] == "будет"] <- ''
+            
+        calcu <- paste(calcu, collapse = ' ')
+            
+        calcu <- trimws(calcu)
+            
+        print(calcu)
 
     } else {
         
@@ -167,8 +198,43 @@ main <- function() {
 }
 
 # start
-print("Привет, я Юнона. Со мной весело")
+tmr <- format(Sys.time(), "%H")
+tmr <- as.integer(tmr)
 
+p <- list(0, 0)
+
+names(p) <- c(0,1)
+
+#morning
+p[[paste0(as.integer(tmr < 12 & tmr >= 5))]] <- c("Доброе утро", "Я готова служить вам этим утром", "Доброго утра, милорд", "Поздравляю, вы пережили ночь", "Как поживаете?", "Чашечку кофе?")
+#day
+p[[paste0(as.integer(tmr >= 12 & tmr < 18))]] <- c("Добрый день", "Что будете делать этим днем?", "Чем я могу помочь?", "Вы уже пообедали?","Приветствую вас этим днем", "Здравия желаю")
+#evening
+p[[paste0(as.integer(tmr >= 18 & tmr < 24))]] <- c("Добрый вечер", "Хороший вечер, не правда ли?", "Вы уже поужинали?", "Привет, я подсяду?","Рада видеть вас этим вечером", "Мое почтение", "Чашечку чая?")
+#night
+p[[paste0(as.integer(tmr >= 0 & tmr < 5))]] <- c("Доброй ночи", "Зачем вы меня разбудили?", "Кому нужна помощь ночью?", "Я не сплю!", "У вас сбит режим сна?", "Вы ночной человек?")
+#NewYear
+p[[paste0(as.integer(date = "2021-01-01"))]] <- c("С новым годом!", "Новый год!", "Надеюсь передоза алкоголем не будет", "Деда мороза не существует")
+#easter
+p[[paste0(as.integer(date = "2021-08-21"))]] <- c("Сейчас прохоит Пасха", "С Пасхой")
+#rio
+p[[paste0(as.integer(date = "2021-02-12"))]] <- c("А вы знали что сейчас карнавал в Рио-де-Женейро?")
+#brm
+p[[paste0(as.integer(date = "2020-08-24"))]] <- c("А вы знали что сейчас проходит арт-фестиваль buning man?")
+#CODERSDAY (ノಠ益ಠ)ノ彡┻━┻
+p[[paste0(as.integer(date = "2020-09-12"))]] <- c("А вы знали что сейчас день программиста?")
+#cny
+p[[paste0(as.integer(date = "2021-02-12"))]] <- c("А вы знали что сейчас Китайский Новый Год?")
+#summer
+p[[paste0(as.integer(date = "2021-06-01"))]] <- c("Сегодня превый день лета!","Сегодня школьники заполонили интернет", "Лето началось!")
+#autumn
+p[[paste0(as.integer(date = "2021-09-01"))]] <- c("Сегодня первый день осени","Сегодня школьники освободили интернет", "Теперь деревья голые :/")
+#winter
+p[[paste0(as.integer(date = "2021-11-01"))]] <- c("Сегодня первый день зимы", "А почему все белое?", "Скоро новый год", "А у меня зима :)")
+#spring
+p[[paste0(as.integer(date = "2021-03-01"))]] <- c("Наступила весна", "Весна пришла", "Скоро школьники заполонят интернет")
+
+print(paste0(sample(p$'1', 1)))
 while (1) {
     main()
 }
