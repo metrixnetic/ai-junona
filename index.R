@@ -152,6 +152,24 @@ execute_cmd  <- function(cmd, userInput) {
     } else if (cmd == 'onlydate'){
             
         print(paste("Сегодня", date))
+            
+    } else if (cmd == 'music'){
+            
+        userInput <- str_split(userInput, " ")
+
+        musc <- unlist(userInput)
+
+        musc[userInput[[1]] == "музыка"     |
+             userInput[[1]] == "музыку"     |
+             userInput[[1]] == "найди"      |
+             userInput[[1]] == "песню"      |
+             userInput[[1]] == "песня"]  <- ''
+
+        musk  <-  paste(musk, collapse = ' ')
+
+        musk  <- trimws(musk)
+            
+        browseURL(paste0('https://google.com/search?q=', musk), browser="firefox")  
 
     } else if (cmd == 'calculator') {
             
