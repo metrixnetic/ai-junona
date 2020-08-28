@@ -7,7 +7,7 @@
         "jokeRu": ["расскажи анекдот", "рассмеши меня", "ты знаешь анекдоты"],
         "jokeEn": ["tell a joke", "make me laugh", "you know the jokes"],
         "searchRu": ["что такое", "это", "расскажи о", "зачем нужен"],
-        "searchEn": ["what is", "this", "tell me about", "why is it necessary"],
+        "searchEn": ["what is", "this", "tell me about"],
         "myMapRu": ["где я", "мое местоположение", "где этот"],
         "myMapEn": ["where am I", "my location", "where is this"],
         "helpRu": ["помоги", "помогите", "памаги", "хелп", "мне нужна помощь"],
