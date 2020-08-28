@@ -173,6 +173,8 @@ execute_cmd  <- function(cmd, userInput) {
 
         musk  <- trimws(musk)
 
+        print(musk)
+
         Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
         Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
 
