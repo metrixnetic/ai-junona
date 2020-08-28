@@ -3,6 +3,10 @@ library(fuzzywuzzyR)
 library(rjson)
 library(tidyverse)
 library(stringi)
+library(devtools)
+library(spotifyr)
+library(knitr)
+
 
 use_python("./.local/lib/python3.8/site-packages")
 
@@ -157,9 +161,9 @@ execute_cmd  <- function(cmd, userInput) {
             
         userInput <- str_split(userInput, " ")
 
-        musc <- unlist(userInput)
+        musk <- unlist(userInput)
 
-        musc[userInput[[1]] == "музыка"     |
+        musk[userInput[[1]] == "музыка"     |
              userInput[[1]] == "музыку"     |
              userInput[[1]] == "найди"      |
              userInput[[1]] == "песню"      |
@@ -168,8 +172,20 @@ execute_cmd  <- function(cmd, userInput) {
         musk  <-  paste(musk, collapse = ' ')
 
         musk  <- trimws(musk)
-            
-        browseURL(paste0('https://google.com/search?q=', musk), browser="firefox") 
+
+        Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
+        Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
+
+        access_token <- get_spotify_access_token()
+
+        track <- search_spotify(q = musk, type = "track", authorization = access_token, limit = 1, offset = 0)
+
+        track %>%
+          count(uri, id, sort = TRUE)%>%
+          kable()
+        burl <- track$uri
+
+        browseURL(burl, browser = NULL)
 
     } else if (cmd == 'calculator') {
             
