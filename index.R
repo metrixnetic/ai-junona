@@ -192,6 +192,7 @@ execute_cmd  <- function(cmd, userInput) {
             
         print(paste("Сегодня", date))
             
+
     } else if (cmd == 'onlydateEn'){
             
         print(paste("Today", date))
@@ -203,6 +204,15 @@ execute_cmd  <- function(cmd, userInput) {
         musk <- unlist(userInput)
 
         musk[userInput[[1]] == "музыка"     |
+
+    } else if (cmd == 'music'){
+            
+        userInput <- str_split(userInput, " ")
+
+        musc <- unlist(userInput)
+
+        musc[userInput[[1]] == "музыка"     |
+
              userInput[[1]] == "музыку"     |
              userInput[[1]] == "найди"      |
              userInput[[1]] == "песню"      |
@@ -212,10 +222,15 @@ execute_cmd  <- function(cmd, userInput) {
 
         musk  <- trimws(musk)
 
+
         print(musk)
 
         Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
         Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
+
+            
+        browseURL(paste0('https://google.com/search?q=', musk), browser="firefox")  
+
 
         access_token <- get_spotify_access_token()
 
