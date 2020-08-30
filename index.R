@@ -3,6 +3,10 @@ library(fuzzywuzzyR)
 library(rjson)
 library(tidyverse)
 library(stringi)
+library(devtools)
+library(spotifyr)
+library(knitr)
+
 
 use_python("./.local/lib/python3.8/site-packages")
 
@@ -65,9 +69,13 @@ nerual <- function (cmd) {
 
 execute_cmd  <- function(cmd, userInput) {
 
-    if (cmd == 'ctime') {
+    if (cmd == 'ctimeRu') {
 
         print(paste("Сейчас", now))
+            
+    } else if (cmd == 'ctimeEn') {
+            
+            print(paste("Now", now))
 
     } else if (cmd == 'joke') {
     
@@ -117,7 +125,7 @@ execute_cmd  <- function(cmd, userInput) {
                 cat(paste0(sample(joke, 1), "\n"))
     
 
-    } else if (cmd == 'search') {
+    } else if (cmd == 'searchRu') {
 
         userInput <- str_split(userInput, " ")
 
@@ -136,23 +144,67 @@ execute_cmd  <- function(cmd, userInput) {
         unls  <- trimws(unls)
 
         browseURL(paste0('https://google.com/search?q=', unls), browser="firefox")
-
-    } else if (cmd == 'myMap') {
-        
-        browseURL("https://www.google.com/maps", browser="firefox")
             
-    } else if (cmd == 'weather') {
+    } else if (cmd == 'searchEn') {
+
+        userInput <- str_split(userInput, " ")
+
+        unls <- unlist(userInput)
+
+        unls[userInput[[1]] == "what"     |
+             userInput[[1]] == "is"       |
+             userInput[[1]] == "this"     |
+             userInput[[1]] == "tell"     |
+             userInput[[1]] == "me"       |
+             userInput[[1]] == "about"]  <- ''
+
+        unls  <-  paste(unls, collapse = ' ')
+
+        unls  <- trimws(unls)
+
+        browseURL(paste0('https://google.com/search?q=', unls), browser="firefox")
+
+    } else if (cmd == 'myMapRu') {
         
-        browseURL("https://www.accuweather.com/", browser="firefox")
-
-    } else if (cmd == 'kushac'){
-
-        browseURL(paste0('https://google.com/search?q=', рестораны), browser="firefox")      
+        browseURL("https://www.google.com/maps/ru/", browser="firefox")
             
-    } else if (cmd == 'onlydate'){
+    } else if (cmd == 'myMapEn') {
+        
+        browseURL("https://www.google.com/maps/en/", browser="firefox")
+            
+    } else if (cmd == 'weatherRu') {
+        
+        browseURL("https://www.accuweather.com/ru/", browser="firefox")
+            
+    } else if (cmd == 'weatherEn') {
+        
+        browseURL("https://www.accuweather.com/en/", browser="firefox")
+
+    } else if (cmd == 'kushacRu'){
+
+        browseURL(paste0('https://google.com/search?q=', "Рестораны"), browser="firefox")   
+            
+    } else if (cmd == 'kushacEn'){
+
+        browseURL(paste0('https://google.com/search?q=', "Restaurants"), browser="firefox")
+            
+    } else if (cmd == 'onlydateRu'){
             
         print(paste("Сегодня", date))
             
+
+    } else if (cmd == 'onlydateEn'){
+            
+        print(paste("Today", date))
+            
+    } else if (cmd == 'musicRu'){
+            
+        userInput <- str_split(userInput, " ")
+
+        musk <- unlist(userInput)
+
+        musk[userInput[[1]] == "музыка"     |
+
     } else if (cmd == 'music'){
             
         userInput <- str_split(userInput, " ")
@@ -160,6 +212,7 @@ execute_cmd  <- function(cmd, userInput) {
         musc <- unlist(userInput)
 
         musc[userInput[[1]] == "музыка"     |
+
              userInput[[1]] == "музыку"     |
              userInput[[1]] == "найди"      |
              userInput[[1]] == "песню"      |
@@ -168,17 +221,84 @@ execute_cmd  <- function(cmd, userInput) {
         musk  <-  paste(musk, collapse = ' ')
 
         musk  <- trimws(musk)
+
+
+        print(musk)
+
+        Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
+        Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
+
             
         browseURL(paste0('https://google.com/search?q=', musk), browser="firefox")  
 
-    } else if (cmd == 'calculator') {
+
+        access_token <- get_spotify_access_token()
+
+        track <- search_spotify(q = musk, type = "track", authorization = access_token, limit = 1, offset = 0)
+
+        track %>%
+          count(uri, id, sort = TRUE)%>%
+          kable()
+        burl <- track$uri
+
+        browseURL(burl, browser = NULL)
+            
+            
+    } else if (cmd == 'musicEn'){
+            
+        userInput <- str_split(userInput, " ")
+
+        musk <- unlist(userInput)
+
+        musk[userInput[[1]] == "music"     |
+             userInput[[1]] == "find"      |
+             userInput[[1]] == "song"]  <- ''
+
+        musk  <-  paste(musk, collapse = ' ')
+
+        musk  <- trimws(musk)
+
+        print(musk)
+
+        Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
+        Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
+
+        access_token <- get_spotify_access_token()
+
+        track <- search_spotify(q = musk, type = "track", authorization = access_token, limit = 1, offset = 0)
+
+        track %>%
+          count(uri, id, sort = TRUE)%>%
+          kable()
+        burl <- track$uri
+
+        browseURL(burl, browser = NULL)
+
+    } else if (cmd == 'calculatorRu') {
+            
+        userInput <- str_split(userInput, " ")
+
+        calcu <- unlist(userInput)
+        
+        calcu[userInput[[1]] == "посчитай"] <- ''
+        calcu[userInput[[1]] == "сколько"] <- ''     
+        calcu[userInput[[1]] == "будет"] <- ''
+            
+        calcu <- paste(calcu, collapse = ' ')
+            
+        calcu <- trimws(calcu)
+            
+        print(calcu)
+            
+    } else if (cmd == 'calculatorEn') {
             
         userInput <- str_split(userInput, " ")
 
         calcu <- unlist(userInput)
             
-        calcu[userInput[[1]] == "сколько"] <- ''     
-        calcu[userInput[[1]] == "будет"] <- ''
+        calcu[userInput[[1]] == "count"] <- ''
+        calcu[userInput[[1]] == "how"] <- ''     
+        calcu[userInput[[1]] == "much"] <- ''
             
         calcu <- paste(calcu, collapse = ' ')
             
