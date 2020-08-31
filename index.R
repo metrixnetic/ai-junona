@@ -201,18 +201,9 @@ execute_cmd  <- function(cmd, userInput) {
             
         userInput <- str_split(userInput, " ")
 
-        musk <- unlist(userInput)
-
-        musk[userInput[[1]] == "музыка"     |
-
-    } else if (cmd == 'music'){
-            
-        userInput <- str_split(userInput, " ")
-
         musc <- unlist(userInput)
 
         musc[userInput[[1]] == "музыка"     |
-
              userInput[[1]] == "музыку"     |
              userInput[[1]] == "найди"      |
              userInput[[1]] == "песню"      |
@@ -242,8 +233,7 @@ execute_cmd  <- function(cmd, userInput) {
         burl <- track$uri
 
         browseURL(burl, browser = NULL)
-            
-            
+
     } else if (cmd == 'musicEn'){
             
         userInput <- str_split(userInput, " ")
