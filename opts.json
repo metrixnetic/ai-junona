@@ -17,6 +17,8 @@
         "calculatorRu": ["посчитай", "сколько будет"],
         "calculatorEn": ["count", "how much will be"],
         "translateRu": ["переведи слово", "переведи", "переводчик"],
-        "translateEn": ["translate the word", "translate", "translator"]
+        "translateEn": ["translate the word", "translate", "translator"],
+        "musicRu": ["музыка", "найди музыку"],
+        "musicEn": ["music","find music"]
     }
 }
