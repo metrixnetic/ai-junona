@@ -175,11 +175,11 @@ execute_cmd  <- function(cmd, userInput) {
         
         BROWSE("https://www.accuweather.com/en/")
 
-    } else if (cmd == 'kushacRu'){
+    } else if (cmd == 'restaurantsRu'){
 
         browseURL(paste0('https://google.com/search?q=', "Рестораны"), browser="firefox")   
             
-    } else if (cmd == 'kushacEn'){
+    } else if (cmd == 'restaurantsEn'){
 
         browseURL(paste0('https://google.com/search?q=', "Restaurants"), browser="firefox")
             
