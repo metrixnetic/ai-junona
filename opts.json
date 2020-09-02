@@ -20,9 +20,9 @@
         "translateEn": ["translate the word", "translate", "translator"],
         "musicRu": ["музыка", "найди музыку"],
         "musicEn": ["music","find music"],
-        "onlydateRu" ["сегодняшняя дата", "дата", "скажи дату"],
-        "onlydateRu" ["today's date", "date", "tell me the date"]
-        "restaurantsRu" ["я хочу есть", "где можно заказать еду", "рестораны"]
-        "restaurantsEn" ["I want to eat", "where can I order food", "restaurants"]
+        "onlydateRu": ["сегодняшняя дата", "дата", "скажи дату"],
+        "onlydateRu": ["today's date", "date", "tell me the date"],
+        "restaurantsRu": ["я хочу есть", "где можно заказать еду", "рестораны"],
+        "restaurantsEn": ["I want to eat", "where can I order food", "restaurants"]
     }
 }
