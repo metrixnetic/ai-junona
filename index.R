@@ -113,7 +113,10 @@ execute_cmd  <- function(cmd, userInput) {
 
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "гугл"]  <- ''
+        unls[ userInput[[1]] == "найди"      |
+              userInput[[1]] == "в"          |
+              userInput[[1]] == "запрос"     |
+              userInput[[1]] == "гугл"]  <- ''
 
         unls  <-  paste(unls, collapse = ' ')
 
@@ -127,7 +130,11 @@ execute_cmd  <- function(cmd, userInput) {
 
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "google"]  <- ''
+        unls[ userInput[[1]] == "find"         |
+              userInput[[1]] == "in"           |
+              userInput[[1]] == "the"          |
+              userInput[[1]] == "search"       |
+              userInput[[1]] == "google"]  <- ''
 
         unls  <-  paste(unls, collapse = ' ')
 
