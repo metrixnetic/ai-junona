@@ -80,7 +80,7 @@ execute_cmd  <- function(cmd, userInput) {
 
     } else if (cmd == 'jokeRu') {
     
-    joke  <-  c('Шутка!',
+     joke <- c('Шутка!',
 
                 'Что начнется в пустыне Сахара если к власти придут коммунисты?\nДефицит песка.',
 
@@ -88,14 +88,14 @@ execute_cmd  <- function(cmd, userInput) {
 
                 '18 лет: выскакивает сердечко, когда влюбляешься\n30 лет: выскакивает колено, когда чихаешь',
 
-                "Заходит в бар сири. \n Бармен: Что будешь? \n Сири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать \n Да уж с юмором у меня плохо")
+                "Заходит в бар сири.\nБармен: Что будешь?\nСири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать\nДа уж с юмором у меня плохо")
 
         
                 cat(paste0(sample(joke, 1), "\n"))
             
      } else if (cmd == 'jokeEn') {
 
-      jokeEn  <-  c('Why did the chicken commit suicide? To get to the other side.',
+      jokeEn <- c('Why did the chicken commit suicide? To get to the other side.',
 
                    'Q: What’s the difference between England and a tea bag?\nA: The tea bag stays in the cup longer.',
 
@@ -105,7 +105,7 @@ execute_cmd  <- function(cmd, userInput) {
 
                    'I went to the zoo the other day. There was only a dog in it – it was a shihtzu.',)
 
-            cat(paste0(sample(jokeEn, 1), "\n"))
+                cat(paste0(sample(jokeEn, 1), "\n"))
 
     } else if (cmd == 'searchRu') {
 
@@ -113,13 +113,7 @@ execute_cmd  <- function(cmd, userInput) {
 
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "это"     |
-             userInput[[1]] == "раскажи" |
-             userInput[[1]] == "зачем"   |
-             userInput[[1]] == "кто"     |
-             userInput[[1]] == "что"     |
-             userInput[[1]] == "такие"   |
-             userInput[[1]] == "такое"]  <- ''
+        unls[userInput[[1]] == "гугл"]  <- ''
 
         unls  <-  paste(unls, collapse = ' ')
 
@@ -133,12 +127,7 @@ execute_cmd  <- function(cmd, userInput) {
 
         unls <- unlist(userInput)
 
-        unls[userInput[[1]] == "what"     |
-             userInput[[1]] == "is"       |
-             userInput[[1]] == "this"     |
-             userInput[[1]] == "tell"     |
-             userInput[[1]] == "me"       |
-             userInput[[1]] == "about"]  <- ''
+        unls[userInput[[1]] == "google"]  <- ''
 
         unls  <-  paste(unls, collapse = ' ')
 
@@ -184,10 +173,17 @@ execute_cmd  <- function(cmd, userInput) {
 
         pageRu <- unlist(userInput)
 
-        pageRu[userInput[[1]] == "википедия"        |
-               userInput[[1]] == "найди"            |
-               userInput[[1]] == "в"                |
-               userInput[[1]] == "викпедии"]     <- ''
+        pageRu[ userInput[[1]] == "это"         |
+                userInput[[1]] == "раскажи"     |
+                userInput[[1]] == "зачем"       |
+                userInput[[1]] == "кто"         |
+                userInput[[1]] == "что"         |
+                userInput[[1]] == "такие"       |
+                userInput[[1]] == "такое"       |
+                userInput[[1]] == "википедия"   |
+                userInput[[1]] == "найди"       |
+                userInput[[1]] == "в"           |
+                userInput[[1]] == "викпедии"] <- ''
 
         pageRu  <-  paste(pageRu, collapse = ' ')
 
@@ -207,11 +203,16 @@ execute_cmd  <- function(cmd, userInput) {
 
         pageEn <- unlist(userInput)
 
-        pageEn[userInput[[1]] == "wikipedia"          |
-               userInput[[1]] == "find"               |
-               userInput[[1]] == "in"                 |
-               userInput[[1]] == "the"                |
-               userInput[[1]] == "wikipedia"]     <- ''
+        pageEn[ userInput[[1]] == "what"           |
+                userInput[[1]] == "is"             |
+                userInput[[1]] == "this"           |
+                userInput[[1]] == "tell"           |
+                userInput[[1]] == "me"             |
+                userInput[[1]] == "about"          |     
+                userInput[[1]] == "find"           |
+                userInput[[1]] == "in"             |
+                userInput[[1]] == "the"            |
+                userInput[[1]] == "wikipedia"] <- ''
 
         pageEn  <-  paste(pageEn, collapse = ' ')
 
@@ -231,11 +232,11 @@ execute_cmd  <- function(cmd, userInput) {
 
         musc <- unlist(userInput)
 
-        musc[userInput[[1]] == "музыка"     |
-             userInput[[1]] == "музыку"     |
-             userInput[[1]] == "найди"      |
-             userInput[[1]] == "песню"      |
-             userInput[[1]] == "песня"]  <- ''
+        musc[ userInput[[1]] == "музыка"     |
+              userInput[[1]] == "музыку"     |
+              userInput[[1]] == "найди"      |
+              userInput[[1]] == "песню"      |
+              userInput[[1]] == "песня"]  <- ''
 
         musk  <-  paste(musk, collapse = ' ')
 
