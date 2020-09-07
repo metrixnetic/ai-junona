@@ -23,8 +23,8 @@
         "onlydateRu": ["сегодняшняя дата", "дата", "скажи дату"],
         "onlydateRu": ["today's date", "date", "tell me the date"],
         "restaurantsRu": ["я хочу есть", "где можно заказать еду", "рестораны"],
-        "restaurantsEn": ["I want to eat", "where can I order food", "restaurants"]
-        "googleRu": ["гугл", "гугл запрос", "найди в гугл"]
+        "restaurantsEn": ["I want to eat", "where can I order food", "restaurants"],
+        "googleRu": ["гугл", "гугл запрос", "найди в гугл"],
         "googleEn": ["google", "google search", "find in the google"]
     }
 }
