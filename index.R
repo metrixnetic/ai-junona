@@ -104,21 +104,21 @@ execute_cmd  <- function(cmd, userInput) {
     
     BROWSE("https://www.accuweather.com/en/")
     
-  } else if (cmd == 'restaurantsRu'){
+  } else if (cmd == 'restaurantsRu') {
     
     browseURL(paste0('https://google.com/search?q=', "Рестораны"),
               browser = "firefox")                                    #browser = NULL ##for windows
     
-  } else if (cmd == 'restaurantsEn'){
+  } else if (cmd == 'restaurantsEn') {
     
     browseURL(paste0('https://google.com/search?q=', "Restaurants"),
               browser = "firefox")                                    #browser = NULL ##for windows
     
-  } else if (cmd == 'onlydateRu'){
+  } else if (cmd == 'onlydateRu') {
     
     print(paste("Сегодня", date))
     
-  } else if (cmd == 'onlydateEn'){
+  } else if (cmd == 'onlydateEn') {
     
     print(paste("Today", date))
     
@@ -163,7 +163,7 @@ execute_cmd  <- function(cmd, userInput) {
 
     #wikipedia ##prints informanion from the wikipedia
     
-  } else if (cmd == 'wikipediaRu'){
+  } else if (cmd == 'wikipediaRu') {
     
     userInput <- str_split(userInput, " ")
     
@@ -185,8 +185,6 @@ execute_cmd  <- function(cmd, userInput) {
     
     pageRu  <- trimws(pageRu)
     
-    pageRu <- readline()
-    
     wp_content <- page_content(language = 'ru',
                                project = 'wikipedia',
                                page_name = pageRu,
@@ -196,8 +194,8 @@ execute_cmd  <- function(cmd, userInput) {
     
     cat(paste0(convHtml, 1, "\n"))
     
-  } else if (cmd == 'wikipediaEn'){
-    
+  } else if (cmd == 'wikipediaEn') {
+     
     userInput <- str_split(userInput, " ")
     
     pageEn <- unlist(userInput)
@@ -217,8 +215,6 @@ execute_cmd  <- function(cmd, userInput) {
     
     pageEn  <- trimws(pageEn)
     
-    pageEn <- readline()
-    
     wp_content <- page_content(language = 'ru',
                                project = 'wikipedia',
                                page_name = pageEn,
@@ -230,7 +226,7 @@ execute_cmd  <- function(cmd, userInput) {
 
     #music ##finds music and opens Spotify
     
-  } else if (cmd == 'musicRu'){
+  } else if (cmd == 'musicRu') {
     
     userInput <- str_split(userInput, " ")
     
@@ -245,7 +241,6 @@ execute_cmd  <- function(cmd, userInput) {
     musk  <-  paste(musk, collapse = ' ')
     
     musk  <- trimws(musk)
-    
     
     print(musk)
     
@@ -264,16 +259,11 @@ execute_cmd  <- function(cmd, userInput) {
                             authorization = access_token,
                             limit = 1,
                             offset = 0)
-    
-    track %>%
-      count(uri, id, sort = TRUE)%>%
-      kable()
-    
     burl <- track$uri
     
     browseURL(burl, browser = NULL)
     
-  } else if (cmd == 'musicEn'){
+  } else if (cmd == 'musicEn') {
     
     userInput <- str_split(userInput, " ")
     
@@ -299,10 +289,6 @@ execute_cmd  <- function(cmd, userInput) {
                             authorization = access_token,
                             limit = 1,
                             offset = 0)
-    
-    track %>%
-      count(uri, id, sort = TRUE)%>%
-      kable()
     
     burl <- track$uri
     
@@ -406,7 +392,9 @@ main <- function() {
 
 # start ##start of the program Hello depending on the day
 
-if (language == "Russian_Russia.1251"){
+
+
+if (language == "Russian_Russia.1251") {
   
   tmr <- format(Sys.time(), "%H")
   tmr <- as.integer(tmr)
