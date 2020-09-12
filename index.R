@@ -392,87 +392,74 @@ main <- function() {
 
 # start ##start of the program Hello depending on the day
 
+tmr <- format(Sys.time(), "%H")
+tmr <- as.integer(tmr)
+  
+zerlist <- list(0, 0)
 
+names(zerlist) <- c(0,1)  
 
 if (language == "Russian_Russia.1251") {
   
-  tmr <- format(Sys.time(), "%H")
-  tmr <- as.integer(tmr)
-  
-  p <- list(0, 0)
-  
-  names(p) <- c(0,1)
-  
   #morning
-  p[[paste0(as.integer(tmr < 12 & tmr >= 5))]] <- c("Доброе утро", "Я готова служить вам этим утром", "Доброго утра, милорд", "Поздравляю, вы пережили ночь", "Как поживаете?", "Чашечку кофе?")
+  zerlist[[paste0(as.integer(tmr < 12 & tmr >= 5))]] <- c("Доброе утро", "Я готова служить вам этим утром", "Доброго утра, милорд", "Поздравляю, вы пережили ночь", "Как поживаете?", "Чашечку кофе?")
   #day
-  p[[paste0(as.integer(tmr >= 12 & tmr < 18))]] <- c("Добрый день", "Что будете делать этим днем?", "Чем я могу помочь?", "Вы уже пообедали?","Приветствую вас этим днем", "Здравия желаю")
+  zerlist[[paste0(as.integer(tmr >= 12 & tmr < 18))]] <- c("Добрый день", "Что будете делать этим днем?", "Чем я могу помочь?", "Вы уже пообедали?","Приветствую вас этим днем", "Здравия желаю")
   #evening
-  p[[paste0(as.integer(tmr >= 18 & tmr < 24))]] <- c("Добрый вечер", "Хороший вечер, не правда ли?", "Вы уже поужинали?", "Привет, я подсяду?","Рада видеть вас этим вечером", "Мое почтение", "Чашечку чая?")
+  zerlist[[paste0(as.integer(tmr >= 18 & tmr < 24))]] <- c("Добрый вечер", "Хороший вечер, не правда ли?", "Вы уже поужинали?", "Привет, я подсяду?","Рада видеть вас этим вечером", "Мое почтение", "Чашечку чая?")
   #night
-  p[[paste0(as.integer(tmr >= 0 & tmr < 5))]] <- c("Доброй ночи", "Зачем вы меня разбудили?", "Кому нужна помощь ночью?", "Я не сплю!", "У вас сбит режим сна?", "Вы ночной человек?")
+  zerlist[[paste0(as.integer(tmr >= 0 & tmr < 5))]] <- c("Доброй ночи", "Зачем вы меня разбудили?", "Кому нужна помощь ночью?", "Я не сплю!", "У вас сбит режим сна?", "Вы ночной человек?")
   #NewYear
-  p[[paste0(as.integer(date == "2021-01-01"))]] <- c("С новым годом!", "Новый год!", "Надеюсь передоза алкоголем не будет", "Деда мороза не существует")
+  zerlist[[paste0(as.integer(date == "2021-01-01"))]] <- c("С новым годом!", "Новый год!", "Надеюсь передоза алкоголем не будет", "Деда мороза не существует")
   #easter
-  p[[paste0(as.integer(date == "2021-08-21"))]] <- c("Сейчас прохоит Пасха", "С Пасхой")
+  zerlist[[paste0(as.integer(date == "2021-08-21"))]] <- c("Сейчас прохоит Пасха", "С Пасхой")
   #rio
-  p[[paste0(as.integer(date == "2021-02-12"))]] <- c("А вы знали что сейчас карнавал в Рио-де-Женейро?")
+  zerlist[[paste0(as.integer(date == "2021-02-12"))]] <- c("А вы знали что сейчас карнавал в Рио-де-Женейро?")
   #brm
-  p[[paste0(as.integer(date == "2020-08-24"))]] <- c("А вы знали что сейчас проходит арт-фестиваль buning man?")
+  zerlist[[paste0(as.integer(date == "2020-08-24"))]] <- c("А вы знали что сейчас проходит арт-фестиваль buning man?")
   #CODERSDAY (????????????)???????????????
-  p[[paste0(as.integer(date == "2020-09-12"))]] <- c("А вы знали что сейчас день программиста?")
+  zerlist[[paste0(as.integer(date == "2020-09-12"))]] <- c("А вы знали что сейчас день программиста?")
   #cny
-  p[[paste0(as.integer(date == "2021-02-12"))]] <- c("А вы знали что сейчас Китайский Новый Год?")
+  zerlist[[paste0(as.integer(date == "2021-02-12"))]] <- c("А вы знали что сейчас Китайский Новый Год?")
   #summer
-  p[[paste0(as.integer(date == "2021-06-01"))]] <- c("Сегодня превый день лета!","Сегодня школьники заполонили интернет", "Лето началось!")
+  zerlist[[paste0(as.integer(date == "2021-06-01"))]] <- c("Сегодня превый день лета!","Сегодня школьники заполонили интернет", "Лето началось!")
   #autumn
-  p[[paste0(as.integer(date == "2021-09-01"))]] <- c("Сегодня первый день осени","Сегодня школьники освободили интернет", "Теперь деревья голые :/")
+  zerlist[[paste0(as.integer(date == "2021-09-01"))]] <- c("Сегодня первый день осени","Сегодня школьники освободили интернет", "Теперь деревья голые :/")
   #winter
-  p[[paste0(as.integer(date == "2021-11-01"))]] <- c("Сегодня первый день зимы", "А почему все белое?", "Скоро новый год", "А у меня зима :)")
+  zerlist[[paste0(as.integer(date == "2021-11-01"))]] <- c("Сегодня первый день зимы", "А почему все белое?", "Скоро новый год", "А у меня зима :)")
   #spring
-  p[[paste0(as.integer(date == "2021-03-01"))]] <- c("Наступила весна", "Весна пришла", "Скоро школьники заполонят интернет")
-  
-  
+  zerlist[[paste0(as.integer(date == "2021-03-01"))]] <- c("Наступила весна", "Весна пришла", "Скоро школьники заполонят интернет") 
   
 } else {
   
-  tmr <- format(Sys.time(), "%H")
-  tmr <- as.integer(tmr)
-  
-  p <- list(0, 0)
-  
-  names(p) <- c(0,1)
-  
   #morning
-  p [[paste0 (as.integer (tmr < 12 & tmr >= 5))]] <- c ("Good morning", "I'm ready to serve you this morning", "Good morning my lord", "Congratulations, you survived the night "," How are you? "," A cup of coffee? ")
+  zerlist[[paste0 (as.integer (tmr < 12 & tmr >= 5))]] <- c ("Good morning", "I'm ready to serve you this morning", "Good morning my lord", "Congratulations, you survived the night "," How are you? "," A cup of coffee? ")
   #day
-  p [[paste0 (as.integer (tmr >= 12 & tmr < 18))]] <- c ("Good afternoon", "What will you do this afternoon?", "How can I help?", "You already have lunch? "," I greet you this day "," I wish you hello ")
+  zerlist[[paste0 (as.integer (tmr >= 12 & tmr < 18))]] <- c ("Good afternoon", "What will you do this afternoon?", "How can I help?", "You already have lunch? "," I greet you this day "," I wish you hello ")
   #evening
-  p [[paste0 (as.integer (tmr >= 18 & tmr < 24))]] <- c ("Good evening", "Good evening, isn't it?", "Have you had dinner yet?", "Hello, will I sit down? "," Nice to see you tonight "," My compliments "," A cup of tea? ")
+  zerlist[[paste0 (as.integer (tmr >= 18 & tmr < 24))]] <- c ("Good evening", "Good evening, isn't it?", "Have you had dinner yet?", "Hello, will I sit down? "," Nice to see you tonight "," My compliments "," A cup of tea? ")
   #night
-  p [[paste0 (as.integer (tmr >= 0 & tmr < 5))]] <- c ("Good night", "Why did you wake me up?", "Who needs help at night?", "I am awake ! "," Are you sleepy? "," Are you a night person? ")
+  zerlist[[paste0 (as.integer (tmr >= 0 & tmr < 5))]] <- c ("Good night", "Why did you wake me up?", "Who needs help at night?", "I am awake ! "," Are you sleepy? "," Are you a night person? ")
   #NewYear
-  p [[paste0 (as.integer (date == "2021-01-01"))]] <- c ("Happy New Year!", "New Year!", "I hope there will be no alcohol overdose", "Grandpa frost does not exist ")
+  zerlist[[paste0 (as.integer (date == "2021-01-01"))]] <- c ("Happy New Year!", "New Year!", "I hope there will be no alcohol overdose", "Grandpa frost does not exist ")
   #easter
-  p [[paste0 (as.integer (date == "2021-08-21"))]] <- c ("It's Easter now", "Happy Easter")
+  zerlist[[paste0 (as.integer (date == "2021-08-21"))]] <- c ("It's Easter now", "Happy Easter")
   #rio
-  p [[paste0 (as.integer (date == "2021-02-12"))]] <- c ("Did you know that there is a carnival in Rio de Geneiro now?")
+  zerlist[[paste0 (as.integer (date == "2021-02-12"))]] <- c ("Did you know that there is a carnival in Rio de Geneiro now?")
   #brm
-  p [[paste0 (as.integer (date == "2020-08-24"))]] <- c ("Did you know that the buning man art festival is taking place now?")
+  zerlist[[paste0 (as.integer (date == "2020-08-24"))]] <- c ("Did you know that the buning man art festival is taking place now?")
   #CODERSDAY (??? ??? ??? ???) ??? ??? ?????????
-  p [[paste0 (as.integer (date == "2020-09-12"))]] <- c ("Did you know that it's programmer's day?")
+  zerlist[[paste0 (as.integer (date == "2020-09-12"))]] <- c ("Did you know that it's programmer's day?")
   #cny
-  p [[paste0 (as.integer (date == "2021-02-12"))]] <- c ("Did you know that it's Chinese New Year?")
+  zerlist[[paste0 (as.integer (date == "2021-02-12"))]] <- c ("Did you know that it's Chinese New Year?")
   #summer
-  p [[paste0 (as.integer (date == "2021-06-01"))]] <- c ("Today is the first day of summer!", "Today schoolchildren flooded the Internet", "Summer has begun!")
+  zerlist[[paste0 (as.integer (date == "2021-06-01"))]] <- c ("Today is the first day of summer!", "Today schoolchildren flooded the Internet", "Summer has begun!")
   #autumn
-  p [[paste0 (as.integer (date == "2021-09-01"))]] <- c ("Today is the first day of autumn", "Today schoolchildren have freed the Internet", "Now the trees are bare: /")
+  zerlist[[paste0 (as.integer (date == "2021-09-01"))]] <- c ("Today is the first day of autumn", "Today schoolchildren have freed the Internet", "Now the trees are bare: /")
   #winter
-  p [[paste0 (as.integer (date == "2021-11-01"))]] <- c ("Today is the first day of winter", "Why is everything white?", "New Year is coming", "A I have winter :) ")
+  zerlist[[paste0 (as.integer (date == "2021-11-01"))]] <- c ("Today is the first day of winter", "Why is everything white?", "New Year is coming", "A I have winter :) ")
   #spring
-  p [[paste0 (as.integer (date == "2021-03-01"))]] <- c ("Spring has come", "Spring has come", "Schoolchildren will soon flood the Internet")
-  
-  
+  zerlist[[paste0 (as.integer (date == "2021-03-01"))]] <- c ("Spring has come", "Spring has come", "Schoolchildren will soon flood the Internet")   
   
 }
 
