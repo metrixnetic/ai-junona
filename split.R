@@ -2,7 +2,7 @@ execute_cmd  <- function(cmd, userInput) {
   
   if (cmd == 'ctimeRu') {
     
-    print(paste("Ñåé÷àñ", now))
+    print(paste("Ð¡ÐµÐ¹Ñ‡Ð°Ñ", now))
     
   } else if (cmd == 'ctimeEn') {
     
@@ -26,7 +26,7 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'restaurantsRu') {
     
-    browseURL(paste0('https://google.com/search?q=', "Ðåñòîðàíû"),
+    browseURL(paste0('https://google.com/search?q=', "Ð ÐµÑÑ‚Ð¾Ñ€Ð°Ð½Ñ‹"),
               browser = "firefox")                                    #browser = NULL ##for windows
     
   } else if (cmd == 'restaurantsEn') {
@@ -36,7 +36,7 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'onlydateRu') {
     
-    print(paste("Ñåãîäíÿ", date))
+    print(paste("Ð¡ÐµÐ³Ð¾Ð´Ð½Ñ", date))
     
   } else if (cmd == 'onlydateEn') {
     
@@ -51,10 +51,10 @@ execute_cmd  <- function(cmd, userInput) {
     unls <- unlist(userInput)
     
     unls[ userInput[[1]] == "find"         |
-            userInput[[1]] == "in"           |
-            userInput[[1]] == "the"          |
-            userInput[[1]] == "search"       |
-            userInput[[1]] == "google"]  <- ''
+          userInput[[1]] == "in"           |
+          userInput[[1]] == "the"          |
+          userInput[[1]] == "search"       |
+          userInput[[1]] == "google"]  <- ''
     
     unls  <-  paste(unls, collapse = ' ')
     
@@ -69,10 +69,10 @@ execute_cmd  <- function(cmd, userInput) {
     
     unls <- unlist(userInput)
     
-    unls[ userInput[[1]] == "íàéäè"      |
-            userInput[[1]] == "â"          |
-            userInput[[1]] == "çàïðîñ"     |
-            userInput[[1]] == "ãóãë"]  <- ''
+    unls[ userInput[[1]] == "Ð½Ð°Ð¹Ð´Ð¸"      |
+          userInput[[1]] == "Ð²"          |
+          userInput[[1]] == "Ð·Ð°Ð¿Ñ€Ð¾Ñ"     |
+          userInput[[1]] == "Ð³ÑƒÐ³Ð»"]  <- ''
     
     unls  <-  paste(unls, collapse = ' ')
     
@@ -89,17 +89,17 @@ execute_cmd  <- function(cmd, userInput) {
     
     pageRu <- unlist(userInput)
     
-    pageRu[ userInput[[1]] == "ýòî"           |
-              userInput[[1]] == "ðàñêàæè"       |
-              userInput[[1]] == "çà÷åì"         |
-              userInput[[1]] == "êòî"           |
-              userInput[[1]] == "÷òî"           |
-              userInput[[1]] == "òàêèå"         |
-              userInput[[1]] == "òàêîå"         |
-              userInput[[1]] == "âèêèïåäèÿ"     |
-              userInput[[1]] == "íàéäè"         |
-              userInput[[1]] == "â"             |
-              userInput[[1]] == "âèêïåäèè"] <- ''
+    pageRu[ userInput[[1]] == "ÑÑ‚Ð¾"           |
+            userInput[[1]] == "Ñ€Ð°ÑÐºÐ°Ð¶Ð¸"       |
+            userInput[[1]] == "Ð·Ð°Ñ‡ÐµÐ¼"         |
+            userInput[[1]] == "ÐºÑ‚Ð¾"           |
+            userInput[[1]] == "Ñ‡Ñ‚Ð¾"           |
+            userInput[[1]] == "Ñ‚Ð°ÐºÐ¸Ðµ"         |
+            userInput[[1]] == "Ñ‚Ð°ÐºÐ¾Ðµ"         |
+            userInput[[1]] == "Ð²Ð¸ÐºÐ¸Ð¿ÐµÐ´Ð¸Ñ"     |
+            userInput[[1]] == "Ð½Ð°Ð¹Ð´Ð¸"         |
+            userInput[[1]] == "Ð²"             |
+            userInput[[1]] == "Ð²Ð¸ÐºÐ¿ÐµÐ´Ð¸Ð¸"] <- ''
     
     pageRu  <-  paste(pageRu, collapse = ' ')
     
@@ -121,15 +121,15 @@ execute_cmd  <- function(cmd, userInput) {
     pageEn <- unlist(userInput)
     
     pageEn[ userInput[[1]] == "what"           |
-              userInput[[1]] == "is"             |
-              userInput[[1]] == "this"           |
-              userInput[[1]] == "tell"           |
-              userInput[[1]] == "me"             |
-              userInput[[1]] == "about"          |     
-              userInput[[1]] == "find"           |
-              userInput[[1]] == "in"             |
-              userInput[[1]] == "the"            |
-              userInput[[1]] == "wikipedia"] <- ''
+            userInput[[1]] == "is"             |
+            userInput[[1]] == "this"           |
+            userInput[[1]] == "tell"           |
+            userInput[[1]] == "me"             |
+            userInput[[1]] == "about"          |     
+            userInput[[1]] == "find"           |
+            userInput[[1]] == "in"             |
+            userInput[[1]] == "the"            |
+            userInput[[1]] == "wikipedia"] <- ''
     
     pageEn  <-  paste(pageEn, collapse = ' ')
     
@@ -152,11 +152,11 @@ execute_cmd  <- function(cmd, userInput) {
     
     musk <- unlist(userInput)
     
-    musk[ userInput[[1]] == "ìóçûêà"      |
-            userInput[[1]] == "ìóçûêó"      |
-            userInput[[1]] == "íàéäè"       |
-            userInput[[1]] == "ïåñíþ"       |
-            userInput[[1]] == "ïåñíÿ"]  <- ''
+    musk[ userInput[[1]] == "Ð¼ÑƒÐ·Ñ‹ÐºÐ°"      |
+          userInput[[1]] == "Ð¼ÑƒÐ·Ñ‹ÐºÑƒ"      |
+          userInput[[1]] == "Ð½Ð°Ð¹Ð´Ð¸"       |
+          userInput[[1]] == "Ð¿ÐµÑÐ½ÑŽ"       |
+          userInput[[1]] == "Ð¿ÐµÑÐ½Ñ"]  <- ''
     
     musk  <-  paste(musk, collapse = ' ')
     
@@ -190,8 +190,8 @@ execute_cmd  <- function(cmd, userInput) {
     musk <- unlist(userInput)
     
     musk[ userInput[[1]] == "music"      |
-            userInput[[1]] == "find"       |
-            userInput[[1]] == "song"]  <- ''
+          userInput[[1]] == "find"       |
+          userInput[[1]] == "song"]  <- ''
     
     musk  <-  paste(musk, collapse = ' ')
     
@@ -222,9 +222,9 @@ execute_cmd  <- function(cmd, userInput) {
     
     calcu <- unlist(userInput)
     
-    calcu[ userInput[[1]] == "ïîñ÷èòàé"     |
-             userInput[[1]] == "ñêîëüêî"      |     
-             userInput[[1]] == "áóäåò"]  <-  ''
+    calcu[ userInput[[1]] == "Ð¿Ð¾ÑÑ‡Ð¸Ñ‚Ð°Ð¹"     |
+           userInput[[1]] == "ÑÐºÐ¾Ð»ÑŒÐºÐ¾"      |     
+           userInput[[1]] == "Ð±ÑƒÐ´ÐµÑ‚"]  <-  ''
     
     calcu <- paste(calcu, collapse = ' ')
     
@@ -239,8 +239,8 @@ execute_cmd  <- function(cmd, userInput) {
     calcu <- unlist(userInput)
     
     calcu[ userInput[[1]] == "count"       |
-             userInput[[1]] == "how"         |
-             userInput[[1]] == "much"]  <-  ''
+           userInput[[1]] == "how"         |
+           userInput[[1]] == "much"]  <-  ''
     
     calcu <- paste(calcu, collapse = ' ')
     
@@ -252,15 +252,15 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'jokeRu') {
     
-    joke <- c('Øóòêà!',
+    joke <- c('Ð¨ÑƒÑ‚ÐºÐ°!',
               
-              '×òî íà÷íåòñÿ â ïóñòûíå Ñàõàðà åñëè ê âëàñòè ïðèäóò êîììóíèñòû?\nÄåôèöèò ïåñêà.',
+              'Ð§Ñ‚Ð¾ Ð½Ð°Ñ‡Ð½ÐµÑ‚ÑÑ Ð² Ð¿ÑƒÑÑ‚Ñ‹Ð½Ðµ Ð¡Ð°Ñ…Ð°Ñ€Ð° ÐµÑÐ»Ð¸ Ðº Ð²Ð»Ð°ÑÑ‚Ð¸ Ð¿Ñ€Ð¸Ð´ÑƒÑ‚ ÐºÐ¾Ð¼Ð¼ÑƒÐ½Ð¸ÑÑ‚Ñ‹?\nÐ”ÐµÑ„Ð¸Ñ†Ð¸Ñ‚ Ð¿ÐµÑÐºÐ°.',
               
-              'Ïî÷åìó ñêåëåòû ïëîõî âðóò?\nÏîòîìó ÷òî èõ âèäíî íàñêâîçü',
+              'ÐŸÐ¾Ñ‡ÐµÐ¼Ñƒ ÑÐºÐµÐ»ÐµÑ‚Ñ‹ Ð¿Ð»Ð¾Ñ…Ð¾ Ð²Ñ€ÑƒÑ‚?\nÐŸÐ¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð¸Ñ… Ð²Ð¸Ð´Ð½Ð¾ Ð½Ð°ÑÐºÐ²Ð¾Ð·ÑŒ',
               
-              '18 ëåò: âûñêàêèâàåò ñåðäå÷êî, êîãäà âëþáëÿåøüñÿ\n30 ëåò: âûñêàêèâàåò êîëåíî, êîãäà ÷èõàåøü',
+              '18 Ð»ÐµÑ‚: Ð²Ñ‹ÑÐºÐ°ÐºÐ¸Ð²Ð°ÐµÑ‚ ÑÐµÑ€Ð´ÐµÑ‡ÐºÐ¾, ÐºÐ¾Ð³Ð´Ð° Ð²Ð»ÑŽÐ±Ð»ÑÐµÑˆÑŒÑÑ\n30 Ð»ÐµÑ‚: Ð²Ñ‹ÑÐºÐ°ÐºÐ¸Ð²Ð°ÐµÑ‚ ÐºÐ¾Ð»ÐµÐ½Ð¾, ÐºÐ¾Ð³Ð´Ð° Ñ‡Ð¸Ñ…Ð°ÐµÑˆÑŒ',
               
-              "Çàõîäèò â áàð ñèðè.\nÁàðìåí: ×òî áóäåøü?\nÑèðè: Ó ìåíÿ íåò îòâåòà íà ýòî. Åñòü ëè ÷òî íåáóäü ÷òî ÿ ìîãó äëÿ âàñ ñäåëàòü\nÄà óæ ñ þìîðîì ó ìåíÿ ïëîõî")
+              "Ð—Ð°Ñ…Ð¾Ð´Ð¸Ñ‚ Ð² Ð±Ð°Ñ€ ÑÐ¸Ñ€Ð¸.\nÐ‘Ð°Ñ€Ð¼ÐµÐ½: Ð§Ñ‚Ð¾ Ð±ÑƒÐ´ÐµÑˆÑŒ?\nÐ¡Ð¸Ñ€Ð¸: Ð£ Ð¼ÐµÐ½Ñ Ð½ÐµÑ‚ Ð¾Ñ‚Ð²ÐµÑ‚Ð° Ð½Ð° ÑÑ‚Ð¾. Ð•ÑÑ‚ÑŒ Ð»Ð¸ Ñ‡Ñ‚Ð¾ Ð½ÐµÐ±ÑƒÐ´ÑŒ Ñ‡Ñ‚Ð¾ Ñ Ð¼Ð¾Ð³Ñƒ Ð´Ð»Ñ Ð²Ð°Ñ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ\nÐ”Ð° ÑƒÐ¶ Ñ ÑŽÐ¼Ð¾Ñ€Ð¾Ð¼ Ñƒ Ð¼ÐµÐ½Ñ Ð¿Ð»Ð¾Ñ…Ð¾")
     
     
     cat(paste0(sample(joke, 1), "\n"))
@@ -269,13 +269,13 @@ execute_cmd  <- function(cmd, userInput) {
     
     jokeEn <- c('Why did the chicken commit suicide? To get to the other side.',
                 
-                'Q: What’s the difference between England and a tea bag?\nA: The tea bag stays in the cup longer.',
+                'Q: Whatâ€™s the difference between England and a tea bag?\nA: The tea bag stays in the cup longer.',
                 
                 'A dyslexic man walks into a bra.',
                 
-                'A man walks into a bar with a roll of tarmac under his arm and says: “Pint please… and one for the road.',
+                'A man walks into a bar with a roll of tarmac under his arm and says: â€œPint pleaseâ€¦ and one for the road.',
                 
-                'I went to the zoo the other day. There was only a dog in it – it was a shihtzu.',)
+                'I went to the zoo the other day. There was only a dog in it â€“ it was a shihtzu.',)
     
     cat(paste0(sample(jokeEn, 1), "\n"))
     
