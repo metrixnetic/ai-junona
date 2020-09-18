@@ -8,6 +8,14 @@ execute_cmd  <- function(cmd, userInput) {
     
     print(paste("Now", now))
     
+  } else if (cmd == 'onlydateRu') {
+    
+    print(paste("Сегодня", date))
+    
+  } else if (cmd == 'onlydateEn') {
+    
+    print(paste("Today", date))
+    
   } else if (cmd == 'myMapRu') {
     
     BROWSE("https://www.google.com/maps/ru/")
@@ -23,6 +31,14 @@ execute_cmd  <- function(cmd, userInput) {
   } else if (cmd == 'weatherEn') {
     
     BROWSE("https://www.accuweather.com/en/")
+  
+  } else if (cmd == 'newsRu') {
+    
+    BROWSE("https://news.google.com")
+    
+  } else if (cmd == 'newsEn') {
+    
+    BROWSE("https://news.google.com")
     
   } else if (cmd == 'restaurantsRu') {
     
@@ -33,14 +49,6 @@ execute_cmd  <- function(cmd, userInput) {
     
     browseURL(paste0('https://google.com/search?q=', "Restaurants"),
               browser = "firefox")                                    #browser = NULL ##for windows
-    
-  } else if (cmd == 'onlydateRu') {
-    
-    print(paste("Сегодня", date))
-    
-  } else if (cmd == 'onlydateEn') {
-    
-    print(paste("Today", date))
     
     #Search ##find in the google
     
