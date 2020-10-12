@@ -238,7 +238,7 @@ execute_cmd  <- function(cmd, userInput) {
 
     videotube  <- trimws(videotube)
 
-    yt_search(videotube)
+    yt_search(videotube, type = "video")
     
   } else if (cmd == 'videoTubeRu') {
 
@@ -253,7 +253,7 @@ execute_cmd  <- function(cmd, userInput) {
 
     videotube  <-  paste(videotube, collapse = ' ')
 
-    videotube  <- trimws(videotube)
+    videotube  <- trimws(videotube, type = "video")
 
     yt_search(videotube)
     
