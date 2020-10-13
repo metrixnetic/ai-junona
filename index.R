@@ -162,7 +162,7 @@ if (language == "Russian_Russia.1251") {
   
 }
 
-print(paste0(sample(p$'1', 1)))
+print(paste0(sample(zerlist$'1', 1)))
 
 while (1) {
   main()
