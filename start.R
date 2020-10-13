@@ -6,11 +6,9 @@ library(devtools)
 library(spotifyr)
 library(knitr)
 library(rvest)
-library(jsonlite)
+library(rjson)
 
 #for dialogflow
-
-py_install("apiai")
 
 apiai  <- import("apiai")
 json  <- import("json")
