@@ -257,6 +257,40 @@ execute_cmd  <- function(cmd, userInput) {
 
     yt_search(videotube)
     
+  } else if (cmd == 'chanelTubeRu') {
+    
+    userInput <- str_split(userInput, " ")
+
+    videotube <- unlist(userInput)
+
+    videotube[ userInput[[1]] == "канал"        |
+               userInput[[1]] == "на"           |
+               userInput[[1]] == "ютуб"         |
+               userInput[[1]] == "youtube"]  <- ''
+
+    videotube  <-  paste(videotube, collapse = ' ')
+
+    videotube  <- trimws(videotube)
+
+    yt_search(videotube, type = "channel")   
+    
+  } else if (cmd == 'chanelTubeRu') {
+    
+    userInput <- str_split(userInput, " ")
+
+    videotube <- unlist(userInput)
+
+    videotube[ userInput[[1]] == "chanel"       |
+               userInput[[1]] == "on"           |
+               userInput[[1]] == "the"          |
+               userInput[[1]] == "youtube"]  <- ''
+
+    videotube  <-  paste(videotube, collapse = ' ')
+
+    videotube  <- trimws(videotube)
+
+    yt_search(videotube, type = "channel")
+    
     #calculator ##2 + 2 = 5
     
   } else if (cmd == 'calculatorRu') {
