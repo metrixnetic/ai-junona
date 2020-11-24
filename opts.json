@@ -27,6 +27,10 @@
         "googleRu": ["гугл", "гугл запрос", "найди в гугл"],
         "googleEn": ["google", "google search", "find in the google"],
         "newsRu": ["новости"],
-        "newsEn": ["news"]
+        "newsEn": ["news"],
+        "videoTubeRu": ["видео на ютуб"],
+        "videoTubeEn": ["video on the youtube"],
+        "chanelTubeRu": ["канал на ютуб"],
+        "chanelTubeEn": ["chanel on the youtube"]
     }
 }
