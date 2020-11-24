@@ -1,5 +1,7 @@
 execute_cmd  <- function(cmd, userInput) {
   
+  unls <- unlist(userInput)
+  
   if (cmd == 'ctimeRu') {
     
     print(paste("Сейчас", now))
@@ -56,26 +58,22 @@ execute_cmd  <- function(cmd, userInput) {
     
     userInput <- str_split(userInput, " ")
     
-    unls <- unlist(userInput)
-    
     unls[ userInput[[1]] == "find"         |
           userInput[[1]] == "in"           |
           userInput[[1]] == "the"          |
           userInput[[1]] == "search"       |
           userInput[[1]] == "google"]  <- ''
     
-    unls  <-  paste(unls, collapse = ' ')
+    searcEn  <-  paste(unls, collapse = ' ')
     
-    unls  <- trimws(unls)
+    searcEn <- trimws(searcEn)
     
-    browseURL(paste0('https://google.com/search?q=', unls),
+    browseURL(paste0('https://google.com/search?q=', searc),
               browser="firefox")
     
   } else if (cmd == 'searchRu') {
     
     userInput <- str_split(userInput, " ")
-    
-    unls <- unlist(userInput)
     
     unls[ userInput[[1]] == "найди"      |
           userInput[[1]] == "в"          |
@@ -94,10 +92,8 @@ execute_cmd  <- function(cmd, userInput) {
   } else if (cmd == 'wikipediaRu') {
     
     userInput <- str_split(userInput, " ")
-    
-    pageRu <- unlist(userInput)
-    
-    pageRu[ userInput[[1]] == "это"           |
+
+    unls[ userInput[[1]] == "это"           |
             userInput[[1]] == "раскажи"       |
             userInput[[1]] == "зачем"         |
             userInput[[1]] == "кто"           |
@@ -126,9 +122,7 @@ execute_cmd  <- function(cmd, userInput) {
     
     userInput <- str_split(userInput, " ")
     
-    pageEn <- unlist(userInput)
-    
-    pageEn[ userInput[[1]] == "what"           |
+    unls[ userInput[[1]] == "what"           |
             userInput[[1]] == "is"             |
             userInput[[1]] == "this"           |
             userInput[[1]] == "tell"           |
@@ -157,10 +151,8 @@ execute_cmd  <- function(cmd, userInput) {
   } else if (cmd == 'musicRu') {
     
     userInput <- str_split(userInput, " ")
-    
-    musk <- unlist(userInput)
-    
-    musk[ userInput[[1]] == "музыка"      |
+
+    unls[ userInput[[1]] == "музыка"      |
           userInput[[1]] == "музыку"      |
           userInput[[1]] == "найди"       |
           userInput[[1]] == "песню"       |
@@ -195,17 +187,13 @@ execute_cmd  <- function(cmd, userInput) {
     
     userInput <- str_split(userInput, " ")
     
-    musk <- unlist(userInput)
-    
-    musk[ userInput[[1]] == "music"      |
+    unls[ userInput[[1]] == "music"      |
           userInput[[1]] == "find"       |
           userInput[[1]] == "song"]  <- ''
     
-    musk  <-  paste(musk, collapse = ' ')
+    musiccEn  <-  paste(musiccEn, collapse = ' ')
     
-    musk  <- trimws(musk)
-    
-    print(musk)
+    musicc  <- trimws(musiccEn)
     
     Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
     Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
@@ -227,12 +215,10 @@ execute_cmd  <- function(cmd, userInput) {
 
     userInput <- str_split(userInput, " ")
 
-    videotube <- unlist(userInput)
-
-    videotube[ userInput[[1]] == "видео"        |
-               userInput[[1]] == "на"           |
-               userInput[[1]] == "ютуб"         |
-               userInput[[1]] == "youtube"]  <- ''
+    unls[ userInput[[1]] == "видео"        |
+          userInput[[1]] == "на"           |
+          userInput[[1]] == "ютуб"         |
+          userInput[[1]] == "youtube"]  <- ''
 
     videotube  <-  paste(videotube, collapse = ' ')
 
@@ -244,12 +230,10 @@ execute_cmd  <- function(cmd, userInput) {
 
     userInput <- str_split(userInput, " ")
 
-    videotube <- unlist(userInput)
-
-    videotube[ userInput[[1]] == "video"        |
-               userInput[[1]] == "on"           |
-               userInput[[1]] == "the"          |
-               userInput[[1]] == "youtube"]  <- ''
+    unls[ userInput[[1]] == "video"        |
+          userInput[[1]] == "on"           |
+          userInput[[1]] == "the"          |
+          userInput[[1]] == "youtube"]  <- ''
 
     videotube  <-  paste(videotube, collapse = ' ')
 
@@ -261,12 +245,10 @@ execute_cmd  <- function(cmd, userInput) {
     
     userInput <- str_split(userInput, " ")
 
-    videotube <- unlist(userInput)
-
-    videotube[ userInput[[1]] == "канал"        |
-               userInput[[1]] == "на"           |
-               userInput[[1]] == "ютуб"         |
-               userInput[[1]] == "youtube"]  <- ''
+    unls[ userInput[[1]] == "канал"        |
+          userInput[[1]] == "на"           |
+          userInput[[1]] == "ютуб"         |
+          userInput[[1]] == "youtube"]  <- ''
 
     videotube  <-  paste(videotube, collapse = ' ')
 
@@ -278,12 +260,10 @@ execute_cmd  <- function(cmd, userInput) {
     
     userInput <- str_split(userInput, " ")
 
-    videotube <- unlist(userInput)
-
-    videotube[ userInput[[1]] == "chanel"       |
-               userInput[[1]] == "on"           |
-               userInput[[1]] == "the"          |
-               userInput[[1]] == "youtube"]  <- ''
+    unls[ userInput[[1]] == "chanel"       |
+          userInput[[1]] == "on"           |
+          userInput[[1]] == "the"          |
+          userInput[[1]] == "youtube"]  <- ''
 
     videotube  <-  paste(videotube, collapse = ' ')
 
@@ -296,12 +276,10 @@ execute_cmd  <- function(cmd, userInput) {
   } else if (cmd == 'calculatorRu') {
     
     userInput <- str_split(userInput, " ")
-    
-    calcu <- unlist(userInput)
-    
-    calcu[ userInput[[1]] == "посчитай"     |
-           userInput[[1]] == "сколько"      |     
-           userInput[[1]] == "будет"]  <-  ''
+   
+    unls[ userInput[[1]] == "посчитай"     |
+          userInput[[1]] == "сколько"      |     
+          userInput[[1]] == "будет"]  <-  ''
     
     calcu <- paste(calcu, collapse = ' ')
     
@@ -312,12 +290,10 @@ execute_cmd  <- function(cmd, userInput) {
   } else if (cmd == 'calculatorEn') {
     
     userInput <- str_split(userInput, " ")
-    
-    calcu <- unlist(userInput)
-    
-    calcu[ userInput[[1]] == "count"       |
-           userInput[[1]] == "how"         |
-           userInput[[1]] == "much"]  <-  ''
+   
+    unls[ userInput[[1]] == "count"       |
+          userInput[[1]] == "how"         |
+          userInput[[1]] == "much"]  <-  ''
     
     calcu <- paste(calcu, collapse = ' ')
     
