@@ -25,6 +25,8 @@
         "restaurantsRu": ["я хочу есть", "где можно заказать еду", "рестораны"],
         "restaurantsEn": ["I want to eat", "where can I order food", "restaurants"],
         "googleRu": ["гугл", "гугл запрос", "найди в гугл"],
-        "googleEn": ["google", "google search", "find in the google"]
+        "googleEn": ["google", "google search", "find in the google"],
+        "newsRu": ["новости"],
+        "newsEn": ["news"]
     }
 }
