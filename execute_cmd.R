@@ -78,9 +78,9 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "запрос"     |
           userInput[[1]] == "гугл"]  <- ''
     
-    sercRu  <-  paste(sercRu, collapse = ' ')
+    searcRu  <-  paste(searcRu, collapse = ' ')
     
-    sercRu  <- trimws(unls)
+    searcRu  <- trimws(searcRu)
     
     browseURL(paste0('https://google.com/search?q=', unls),
               browser="firefox")
@@ -101,7 +101,7 @@ execute_cmd  <- function(cmd, userInput) {
             userInput[[1]] == "в"             |
             userInput[[1]] == "викпедии"] <- ''
     
-    pageRu  <-  paste(pageRu, collapse = ' ')
+    pageRu  <-  paste(unls, collapse = ' ')
     
     pageRu  <- trimws(pageRu)
     
@@ -127,7 +127,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "the"            |
           userInput[[1]] == "wikipedia"] <- ''
     
-    pageEn  <-  paste(pageEn, collapse = ' ')
+    pageEn  <-  paste(unls, collapse = ' ')
     
     pageEn  <- trimws(pageEn)
     
@@ -150,7 +150,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "песню"       |
           userInput[[1]] == "песня"]  <- ''
     
-    musk  <-  paste(musk, collapse = ' ')
+    musk  <-  paste(unls, collapse = ' ')
     
     musk  <- trimws(musk)
     
@@ -181,7 +181,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "find"       |
           userInput[[1]] == "song"]  <- ''
     
-    musiccEn  <-  paste(musiccEn, collapse = ' ')
+    musiccEn  <-  paste(unls, collapse = ' ')
     
     musicc  <- trimws(musiccEn)
     
@@ -208,7 +208,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "ютуб"         |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(videotube, collapse = ' ')
+    videotube  <-  paste(unls, collapse = ' ')
 
     videotube  <- trimws(videotube)
 
@@ -234,7 +234,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "ютуб"         |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(videotube, collapse = ' ')
+    videotube  <-  paste(unls, collapse = ' ')
 
     videotube  <- trimws(videotube)
 
@@ -247,7 +247,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "the"          |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(videotube, collapse = ' ')
+    videotube  <-  paste(unls, collapse = ' ')
 
     videotube  <- trimws(videotube)
 
@@ -273,7 +273,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "how"         |
           userInput[[1]] == "much"]  <-  ''
     
-    calcu <- paste(calcu, collapse = ' ')
+    calcu <- paste(unls, collapse = ' ')
     
     calcu <- trimws(calcu)
     
