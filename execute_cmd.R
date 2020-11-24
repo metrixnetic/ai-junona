@@ -1,6 +1,8 @@
 execute_cmd  <- function(cmd, userInput) {
   
-  unls <- unlist(userInput)
+  uiSplit <- str_split(userInput, " ")
+  
+  unls <- unlist(uiSplit)
   
   if (cmd == 'ctimeRu') {
     
@@ -56,8 +58,6 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'searchEn') {
     
-    userInput <- str_split(userInput, " ")
-    
     unls[ userInput[[1]] == "find"         |
           userInput[[1]] == "in"           |
           userInput[[1]] == "the"          |
@@ -73,16 +73,14 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'searchRu') {
     
-    userInput <- str_split(userInput, " ")
-    
     unls[ userInput[[1]] == "найди"      |
           userInput[[1]] == "в"          |
           userInput[[1]] == "запрос"     |
           userInput[[1]] == "гугл"]  <- ''
     
-    unls  <-  paste(unls, collapse = ' ')
+    sercRu  <-  paste(sercRu, collapse = ' ')
     
-    unls  <- trimws(unls)
+    sercRu  <- trimws(unls)
     
     browseURL(paste0('https://google.com/search?q=', unls),
               browser="firefox")
@@ -90,8 +88,6 @@ execute_cmd  <- function(cmd, userInput) {
     #wikipedia ##prints informanion from the wikipedia
     
   } else if (cmd == 'wikipediaRu') {
-    
-    userInput <- str_split(userInput, " ")
 
     unls[ userInput[[1]] == "это"           |
             userInput[[1]] == "раскажи"       |
@@ -119,19 +115,17 @@ execute_cmd  <- function(cmd, userInput) {
     cat(paste0(convHtml, 1, "\n"))
     
   } else if (cmd == 'wikipediaEn') {
-    
-    userInput <- str_split(userInput, " ")
-    
+ 
     unls[ userInput[[1]] == "what"           |
-            userInput[[1]] == "is"             |
-            userInput[[1]] == "this"           |
-            userInput[[1]] == "tell"           |
-            userInput[[1]] == "me"             |
-            userInput[[1]] == "about"          |     
-            userInput[[1]] == "find"           |
-            userInput[[1]] == "in"             |
-            userInput[[1]] == "the"            |
-            userInput[[1]] == "wikipedia"] <- ''
+          userInput[[1]] == "is"             |
+          userInput[[1]] == "this"           |
+          userInput[[1]] == "tell"           |
+          userInput[[1]] == "me"             |
+          userInput[[1]] == "about"          |     
+          userInput[[1]] == "find"           |
+          userInput[[1]] == "in"             |
+          userInput[[1]] == "the"            |
+          userInput[[1]] == "wikipedia"] <- ''
     
     pageEn  <-  paste(pageEn, collapse = ' ')
     
@@ -149,8 +143,6 @@ execute_cmd  <- function(cmd, userInput) {
     #music ##finds music and opens Spotify
     
   } else if (cmd == 'musicRu') {
-    
-    userInput <- str_split(userInput, " ")
 
     unls[ userInput[[1]] == "музыка"      |
           userInput[[1]] == "музыку"      |
@@ -184,9 +176,7 @@ execute_cmd  <- function(cmd, userInput) {
     browseURL(burl, browser = NULL)
     
   } else if (cmd == 'musicEn') {
-    
-    userInput <- str_split(userInput, " ")
-    
+
     unls[ userInput[[1]] == "music"      |
           userInput[[1]] == "find"       |
           userInput[[1]] == "song"]  <- ''
@@ -213,8 +203,6 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'videoTubeRu') {
 
-    userInput <- str_split(userInput, " ")
-
     unls[ userInput[[1]] == "видео"        |
           userInput[[1]] == "на"           |
           userInput[[1]] == "ютуб"         |
@@ -228,8 +216,6 @@ execute_cmd  <- function(cmd, userInput) {
     
   } else if (cmd == 'videoTubeRu') {
 
-    userInput <- str_split(userInput, " ")
-
     unls[ userInput[[1]] == "video"        |
           userInput[[1]] == "on"           |
           userInput[[1]] == "the"          |
@@ -242,8 +228,6 @@ execute_cmd  <- function(cmd, userInput) {
     yt_search(videotube)
     
   } else if (cmd == 'chanelTubeRu') {
-    
-    userInput <- str_split(userInput, " ")
 
     unls[ userInput[[1]] == "канал"        |
           userInput[[1]] == "на"           |
@@ -257,8 +241,6 @@ execute_cmd  <- function(cmd, userInput) {
     yt_search(videotube, type = "channel")   
     
   } else if (cmd == 'chanelTubeRu') {
-    
-    userInput <- str_split(userInput, " ")
 
     unls[ userInput[[1]] == "chanel"       |
           userInput[[1]] == "on"           |
@@ -274,8 +256,6 @@ execute_cmd  <- function(cmd, userInput) {
     #calculator ##2 + 2 = 5
     
   } else if (cmd == 'calculatorRu') {
-    
-    userInput <- str_split(userInput, " ")
    
     unls[ userInput[[1]] == "посчитай"     |
           userInput[[1]] == "сколько"      |     
@@ -288,8 +268,6 @@ execute_cmd  <- function(cmd, userInput) {
     print(calcu)
     
   } else if (cmd == 'calculatorEn') {
-    
-    userInput <- str_split(userInput, " ")
    
     unls[ userInput[[1]] == "count"       |
           userInput[[1]] == "how"         |
