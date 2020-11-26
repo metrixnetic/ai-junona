@@ -1,8 +1,8 @@
 execute_cmd  <- function(cmd, userInput) {
   
-  uiSplit <- str_split(userInput, " ")
+  user_split <- str_split(userInput, " ")
   
-  unls <- unlist(uiSplit)
+  unls <- unlist(user_split)
   
   if (cmd == 'ctimeRu') {
     
@@ -64,11 +64,11 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "search"       |
           userInput[[1]] == "google"]  <- ''
     
-    searcEn  <-  paste(unls, collapse = ' ')
+    search_en  <-  paste(unls, collapse = ' ')
     
-    searcEn <- trimws(searcEn)
+    search_en <- trimws(search_en)
     
-    browseURL(paste0('https://google.com/search?q=', searc),
+    browseURL(paste0('https://google.com/search?q=', search_en),
               browser="firefox")
     
   } else if (cmd == 'searchRu') {
@@ -78,11 +78,11 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "запрос"     |
           userInput[[1]] == "гугл"]  <- ''
     
-    searcRu  <-  paste(searcRu, collapse = ' ')
+    search_ru  <-  paste(search_ru, collapse = ' ')
     
-    searcRu  <- trimws(searcRu)
+    search_ru  <- trimws(search_ru)
     
-    browseURL(paste0('https://google.com/search?q=', unls),
+    browseURL(paste0('https://google.com/search?q=', search_ru),
               browser="firefox")
     
     #wikipedia ##prints informanion from the wikipedia
@@ -90,29 +90,29 @@ execute_cmd  <- function(cmd, userInput) {
   } else if (cmd == 'wikipediaRu') {
 
     unls[ userInput[[1]] == "это"           |
-            userInput[[1]] == "раскажи"       |
-            userInput[[1]] == "зачем"         |
-            userInput[[1]] == "кто"           |
-            userInput[[1]] == "что"           |
-            userInput[[1]] == "такие"         |
-            userInput[[1]] == "такое"         |
-            userInput[[1]] == "википедия"     |
-            userInput[[1]] == "найди"         |
-            userInput[[1]] == "в"             |
-            userInput[[1]] == "викпедии"] <- ''
+          userInput[[1]] == "раскажи"       |
+          userInput[[1]] == "зачем"         |
+          userInput[[1]] == "кто"           |
+          userInput[[1]] == "что"           |
+          userInput[[1]] == "такие"         |
+          userInput[[1]] == "такое"         |
+          userInput[[1]] == "википедия"     |
+          userInput[[1]] == "найди"         |
+          userInput[[1]] == "в"             |
+          userInput[[1]] == "викпедии"] <- ''
     
-    pageRu  <-  paste(unls, collapse = ' ')
+    page_ru  <-  paste(unls, collapse = ' ')
     
-    pageRu  <- trimws(pageRu)
+    page_ru  <- trimws(page_ru)
     
     wp_content <- page_content(language = 'ru',
                                project = 'wikipedia',
-                               page_name = pageRu,
-                               as_wikitext = F)
+                               page_name = page_ru,
+                               as_wikitext = FALSE)
     
-    convHtml <- html_text(read_html(wp_content$parse$text$`*`))
+    conv_html <- html_text(read_html(wp_content$parse$text$`*`))
     
-    cat(paste0(convHtml, 1, "\n"))
+    cat(paste0(conv_html, 1, "\n"))
     
   } else if (cmd == 'wikipediaEn') {
  
@@ -127,18 +127,18 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "the"            |
           userInput[[1]] == "wikipedia"] <- ''
     
-    pageEn  <-  paste(unls, collapse = ' ')
+    page_en  <-  paste(unls, collapse = ' ')
     
-    pageEn  <- trimws(pageEn)
+    page_en  <- trimws(page_en)
     
-    wp_content <- page_content(language = 'ru',
+    wp_content <- page_content(language = 'en',
                                project = 'wikipedia',
-                               page_name = pageEn,
-                               as_wikitext = F)
+                               page_name = page_en,
+                               as_wikitext = FALSE)
     
-    convHtml <- html_text(read_html(wp_content$parse$text$`*`))
+    conv_html <- html_text(read_html(wp_content$parse$text$`*`))
     
-    cat(paste0(convHtml, 1, "\n"))
+    cat(paste0(conv_html, 1, "\n"))
     
     #music ##finds music and opens Spotify
     
@@ -150,23 +150,23 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "песню"       |
           userInput[[1]] == "песня"]  <- ''
     
-    musk  <-  paste(unls, collapse = ' ')
+    musicc_ru  <-  paste(unls, collapse = ' ')
     
-    musk  <- trimws(musk)
+    musicc_ru  <- trimws(musicc_ru)
     
-    print(musk)
+    print(musicc_ru)
     
     Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
     Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
     
     
-    browseURL(paste0('https://google.com/search?q=', musk),
+    browseURL(paste0('https://google.com/search?q=', musicc_ru),
               browser="firefox")  
     
     
     access_token <- get_spotify_access_token()
     
-    track <- search_spotify(q = musk,
+    track <- search_spotify(q = musicc_ru,
                             type = "track",
                             authorization = access_token,
                             limit = 1,
@@ -181,16 +181,16 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "find"       |
           userInput[[1]] == "song"]  <- ''
     
-    musiccEn  <-  paste(unls, collapse = ' ')
+    musicc_en  <-  paste(unls, collapse = ' ')
     
-    musicc  <- trimws(musiccEn)
+    musicc_en  <- trimws(musicc_en)
     
     Sys.setenv(SPOTIFY_CLIENT_ID = '1a1ea466f4aa424aa8d9fef8bf0a748d')
     Sys.setenv(SPOTIFY_CLIENT_SECRET = '188d7d94430546fa92bdd5c72c4d2d92')
     
     access_token <- get_spotify_access_token()
     
-    track <- search_spotify(q = musk,
+    track <- search_spotify(q = musicc_en,
                             type = "track",
                             authorization = access_token,
                             limit = 1,
@@ -208,24 +208,24 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "ютуб"         |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(unls, collapse = ' ')
+    video_tube_ru  <-  paste(unls, collapse = ' ')
 
-    videotube  <- trimws(videotube)
+    video_tube_ru  <- trimws(video_tube_ru)
 
-    yt_search(videotube, type = "video")
+    yt_search(video_tube_ru, type = "video")
     
-  } else if (cmd == 'videoTubeRu') {
+  } else if (cmd == 'videoTubeEn') {
 
     unls[ userInput[[1]] == "video"        |
           userInput[[1]] == "on"           |
           userInput[[1]] == "the"          |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(videotube, collapse = ' ')
+    video_tube_en  <-  paste(video_tube_en, collapse = ' ')
 
-    videotube  <- trimws(videotube, type = "video")
+    video_tube_en  <- trimws(video_tube_en, type = "video")
 
-    yt_search(videotube)
+    yt_search(video_tube_en)
     
   } else if (cmd == 'chanelTubeRu') {
 
@@ -234,24 +234,24 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "ютуб"         |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(unls, collapse = ' ')
+    chanel_tube_ru  <-  paste(unls, collapse = ' ')
 
-    videotube  <- trimws(videotube)
+    chanel_tube_ru  <- trimws(chanel_tube_ru)
 
-    yt_search(videotube, type = "channel")   
+    yt_search(chanel_tube_ru, type = "channel")   
     
-  } else if (cmd == 'chanelTubeRu') {
+  } else if (cmd == 'chanelTubeEn') {
 
     unls[ userInput[[1]] == "chanel"       |
           userInput[[1]] == "on"           |
           userInput[[1]] == "the"          |
           userInput[[1]] == "youtube"]  <- ''
 
-    videotube  <-  paste(unls, collapse = ' ')
+    chanel_tube_en  <-  paste(unls, collapse = ' ')
 
-    videotube  <- trimws(videotube)
+    chanel_tube_en  <- trimws(chanel_tube_en)
 
-    yt_search(videotube, type = "channel")
+    yt_search(chanel_tube_en, type = "channel")
     
     #calculator ##2 + 2 = 5
     
@@ -261,11 +261,11 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "сколько"      |     
           userInput[[1]] == "будет"]  <-  ''
     
-    calcu <- paste(calcu, collapse = ' ')
+    calcu_ru <- paste(calcu_ru, collapse = ' ')
     
-    calcu <- trimws(calcu)
+    calcu_ru <- trimws(calcu_ru)
     
-    print(calcu)
+    print(calcu_ru)
     
   } else if (cmd == 'calculatorEn') {
    
@@ -273,17 +273,17 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "how"         |
           userInput[[1]] == "much"]  <-  ''
     
-    calcu <- paste(unls, collapse = ' ')
+    calcu_en <- paste(calcu_en, collapse = ' ')
     
-    calcu <- trimws(calcu)
+    calcu_en <- trimws(calcu_en)
     
-    print(calcu)
+    print(calcu_en)
     
     #jokes ##prints 1 joke from vector
     
   } else if (cmd == 'jokeRu') {
     
-    joke <- c('Шутка!',
+    joke_ru <- c('Шутка!',
               
               'Что начнется в пустыне Сахара если к власти придут коммунисты?\nДефицит песка.',
               
@@ -294,11 +294,11 @@ execute_cmd  <- function(cmd, userInput) {
               "Заходит в бар сири.\nБармен: Что будешь?\nСири: У меня нет ответа на это. Есть ли что небудь что я могу для вас сделать\nДа уж с юмором у меня плохо")
     
     
-    cat(paste0(sample(joke, 1), "\n"))
+    cat(paste0(sample(joke_ru, 1), "\n"))
     
   } else if (cmd == 'jokeEn') {
     
-    jokeEn <- c('Why did the chicken commit suicide? To get to the other side.',
+    joke_en <- c('Why did the chicken commit suicide? To get to the other side.',
                 
                 'Q: What’s the difference between England and a tea bag?\nA: The tea bag stays in the cup longer.',
                 
@@ -308,7 +308,7 @@ execute_cmd  <- function(cmd, userInput) {
                 
                 'I went to the zoo the other day. There was only a dog in it – it was a shihtzu.',)
     
-    cat(paste0(sample(jokeEn, 1), "\n"))
+    cat(paste0(sample(joke_en, 1), "\n"))
     
     #DialogFlow
     
@@ -322,9 +322,9 @@ execute_cmd  <- function(cmd, userInput) {
     
     request$query  <- userInput
     
-    responseJson <- json$loads(request$getresponse()$read()$decode('utf-8'))
+    response_json <- json$loads(request$getresponse()$read()$decode('utf-8'))
     
-    response <- responseJson$result$fulfillment$messages[[1]]$speech
+    response <- response_json$result$fulfillment$messages[[1]]$speech
     
     print(response)
     
