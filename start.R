@@ -27,8 +27,6 @@ language <- Sys.getlocale(category = "LC_CTYPE")
 result0  <- list()
 percVector  <- c()
 
-userInput  <- "кривет"
-
 nerual <- function (userCmd) {
   
   i  <- 0
