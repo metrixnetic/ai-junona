@@ -24,54 +24,57 @@ language <- Sys.getlocale(category = "LC_CTYPE")
 
 #nerual ##fuzzywuzzy nerual
 
-nerual <- function (cmd) {
+result0  <- list()
+percVector  <- c()
+
+userInput  <- "кривет"
+
+nerual <- function (userCmd) {
   
-  N  <-  list(cmd = '',
-              percent = 0)
   i  <- 0
   
-  x  <- 0
+  name  <- 0
   
-  while (i < length(names(opts$cmd))) {
+  while (i < length(names(opts$cmds))) {
     
     i  <- i + 1
-    x  <- names(opts$cmd[i])
+    name  <- names(opts$cmds[i])
     
     i1  <- 0
     b  <- 0
     
-    while (i1 < length(opts$cmds[[x]])){
+    while (i1 < length(opts$cmds[[name]])){
       
-      i1  <- i1 +1
-      b  <- opts$cmds[[x]][i]
+      i1  <- i1 + 1
+      cycleNames  <- opts$cmds[[name]][i1]
       
-      fuz <- FuzzMatcher$new()
+      fuzzy  <- FuzzMatcher$new()
       
-      vrt <- fuz$WRATIO(cmd, b)
-      
-      if (vrt > N$percent) {
-        
-        N$percent  <- vrt
-        
-        N$cmd  <- x 
-      }
+      vrt  <- fuzzy$WRATIO(userCmd, cycleNames)
+ 
+      result0  <- list.append(result0, c(name = name, userCmd = userCmd))
+
+      percVector  <- c(percVector, vrt)
       
     }
     
   }
-  
-  #percentille
-  
-  if (N$percent > 50) {
+
+  percIndex <- which.max(percVector)
+  perc  <- percVector[percIndex]
+
+  finalCmd  <- toString(result0[[1]]["userCmd"])
+  finalName  <- toString(result0[[1]]["name"])
+
+  if (perc < 100 & perc != 100) {
     
-    return(N$cmd)
-    
-  } else {
-    
-    return("") 
-    
+    opts$cmds[[finalName]]  <- list.append(opts$cmds[[finalName]], userInput)
+    write_json(opts, "opts.json")
+
+    return(finalName)
+
   }
-  
+
 }
 
 #scripts
@@ -82,8 +85,8 @@ main <- function() {
   
   userInput <- readline()
   
-  cmd  <- nerual(userInput)
-  return(execute_cmd(cmd, userInput))
+  finalName  <- nerual(userInput)
+  return(execute_cmd(finalName, userInput))
   
 }
 
