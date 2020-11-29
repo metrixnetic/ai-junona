@@ -2,11 +2,11 @@ library(reticulate)
 library(fuzzywuzzyR)
 library(tidyverse)
 library(stringi)
-library(devtools)
 library(spotifyr)
 library(knitr)
 library(rvest)
-library(rjson)
+library(jsonlite)
+library(rlist)
 
 #for dialogflow
 
