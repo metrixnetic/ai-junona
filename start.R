@@ -18,7 +18,7 @@ json  <- import("json")
 now <- Sys.time()
 date <- Sys.Date()
 
-opts  <- fromJSON(file = "opts.json")
+opts  <- fromJSON("opts.json")
 
 language <- Sys.getlocale(category = "LC_CTYPE")
 
@@ -53,31 +53,40 @@ nerual <- function (userCmd) {
       result0  <- list.append(result0, c(name = name, userCmd = userCmd))
 
       percVector  <- c(percVector, vrt)
-      
+ 
+        percIndex <- which.max(percVector)
+        perc  <- percVector[percIndex]
+
+        finalCmd  <- toString(result0[[percIndex]]["userCmd"])
+        finalName  <- toString(result0[[percIndex]]["name"])
     }
     
   }
 
-  percIndex <- which.max(percVector)
-  perc  <- percVector[percIndex]
-
-  finalCmd  <- toString(result0[[1]]["userCmd"])
-  finalName  <- toString(result0[[1]]["name"])
-
-  if (perc < 100 & perc != 100) {
+    if (perc < 100 & perc != 100 & perc > 80) {
     
-    opts$cmds[[finalName]]  <- list.append(opts$cmds[[finalName]], userInput)
+    opts$cmds[[finalName]]  <- list.append(opts$cmds[[finalName]], userCmd)
     write_json(opts, "opts.json")
 
-    return(finalName)
+        return(finalName)
 
-  }
+    }
+
+    else if(perc > 50) {
+        return(finalName)
+    }
+    
+
+    else {
+        return("")
+    }
+
 
 }
 
 #scripts
 
-source("split.R")
+source("execute_cmd.R")
 
 main <- function() {
   
