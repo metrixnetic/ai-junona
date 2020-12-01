@@ -1,8 +1,25 @@
+library(reticulate)
+library(httr)
+library(tidyverse)
+library(stringi)
+library(spotifyr)
+library(knitr)
+library(rvest)
+library(jsonlite)
+library(rlist)
+
 execute_cmd  <- function(cmd, userInput) {
   
   user_split <- str_split(userInput, " ")
   
   unls <- unlist(user_split)
+  
+  now <- Sys.time()
+  date <- Sys.Date()
+  
+  opts  <- fromJSON("opts.json")
+
+  language <- Sys.getlocale(category = "LC_CTYPE")
   
   if (cmd == 'ctimeRu') {
     
