@@ -238,7 +238,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "the"          |
           userInput[[1]] == "youtube"]  <- ''
 
-    video_tube_en  <-  paste(video_tube_en, collapse = ' ')
+    video_tube_en  <-  paste(unls, collapse = ' ')
 
     video_tube_en  <- trimws(video_tube_en, type = "video")
 
@@ -278,7 +278,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "сколько"      |     
           userInput[[1]] == "будет"]  <-  ''
     
-    calcu_ru <- paste(calcu_ru, collapse = ' ')
+    calcu_ru <- paste(unls, collapse = ' ')
     
     calcu_ru <- trimws(calcu_ru)
     
@@ -290,7 +290,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "how"         |
           userInput[[1]] == "much"]  <-  ''
     
-    calcu_en <- paste(calcu_en, collapse = ' ')
+    calcu_en <- paste(unls, collapse = ' ')
     
     calcu_en <- trimws(calcu_en)
     
