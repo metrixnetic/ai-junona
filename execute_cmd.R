@@ -95,7 +95,7 @@ execute_cmd  <- function(cmd, userInput) {
           userInput[[1]] == "запрос"     |
           userInput[[1]] == "гугл"]  <- ''
     
-    search_ru  <-  paste(search_ru, collapse = ' ')
+    search_ru  <-  paste(unls, collapse = ' ')
     
     search_ru  <- trimws(search_ru)
     
