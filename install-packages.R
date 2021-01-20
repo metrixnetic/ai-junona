@@ -1,5 +1,6 @@
 install.packages("reticulate")
 install.packages("devtools")
+install.packages("httr")
 install.packages("fuzzywuzzyR")
 install.packages("tidyverse")
 install.packages("stringi")

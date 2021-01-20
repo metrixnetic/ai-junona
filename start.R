@@ -65,15 +65,15 @@ nerual <- function (user_cmd) {
 
     if (perc < 100 & perc != 100 & perc > 80) {
     
-    opts$cmds[[finalName]]  <- list.append(opts$cmds[[finalName]], userCmd)
+    opts$cmds[[final_name]]  <- list.append(opts$cmds[[final_name]], user_cmd)
     write_json(opts, "opts.json")
 
-        return(finalName)
+        return(final_name)
 
     }
 
     else if(perc > 50) {
-        return(finalName)
+        return(final_name)
     }
     
 
@@ -90,10 +90,10 @@ source("execute_cmd.R")
 
 main <- function() {
   
-  userInput <- readline()
+  user_input <- readline()
   
-  finalName  <- nerual(userInput)
-  return(execute_cmd(finalName, userInput))
+  final_name  <- nerual(user_input)
+  return(execute_cmd(final_name, user_input))
   
 }
 
