@@ -25,9 +25,9 @@ language <- Sys.getlocale(category = "LC_CTYPE")
 #nerual ##fuzzywuzzy nerual
 
 result0  <- list()
-percVector  <- c()
+perc_vector  <- c()
 
-nerual <- function (userCmd) {
+nerual <- function (user_cmd) {
   
   i  <- 0
   
@@ -44,21 +44,21 @@ nerual <- function (userCmd) {
     while (i1 < length(opts$cmds[[name]])){
       
       i1  <- i1 + 1
-      cycleNames  <- opts$cmds[[name]][i1]
+      cycle_names  <- opts$cmds[[name]][i1]
       
       fuzzy  <- FuzzMatcher$new()
       
-      vrt  <- fuzzy$WRATIO(userCmd, cycleNames)
+      vrt  <- fuzzy$WRATIO(user_cmd, cycle_names)
  
-      result0  <- list.append(result0, c(name = name, userCmd = userCmd))
+      result0  <- list.append(result0, c(name = name, user_cmd = user_cmd))
 
-      percVector  <- c(percVector, vrt)
+      perc_vector  <- c(perc_vector, vrt)
  
-        percIndex <- which.max(percVector)
-        perc  <- percVector[percIndex]
+        perc_index <- which.max(perc_vector)
+        perc  <- perc_vector[perc_index]
 
-        finalCmd  <- toString(result0[[percIndex]]["userCmd"])
-        finalName  <- toString(result0[[percIndex]]["name"])
+        final_cmd  <- toString(result0[[perc_index]]["userCmd"])
+        final_name  <- toString(result0[[perc_index]]["name"])
     }
     
   }
