@@ -25,9 +25,9 @@ language <- Sys.getlocale(category = "LC_CTYPE")
 #nerual ##fuzzywuzzy nerual
 
 result0  <- list()
-percVector  <- c()
+perc_vector  <- c()
 
-nerual <- function (userCmd) {
+nerual <- function (user_cmd) {
   
   i  <- 0
   
@@ -44,36 +44,36 @@ nerual <- function (userCmd) {
     while (i1 < length(opts$cmds[[name]])){
       
       i1  <- i1 + 1
-      cycleNames  <- opts$cmds[[name]][i1]
+      cycle_names  <- opts$cmds[[name]][i1]
       
       fuzzy  <- FuzzMatcher$new()
       
-      vrt  <- fuzzy$WRATIO(userCmd, cycleNames)
+      vrt  <- fuzzy$WRATIO(user_cmd, cycle_names)
  
-      result0  <- list.append(result0, c(name = name, userCmd = userCmd))
+      result0  <- list.append(result0, c(name = name, user_cmd = user_cmd))
 
-      percVector  <- c(percVector, vrt)
+      perc_vector  <- c(perc_vector, vrt)
  
-        percIndex <- which.max(percVector)
-        perc  <- percVector[percIndex]
+        perc_index <- which.max(perc_vector)
+        perc  <- perc_vector[perc_index]
 
-        finalCmd  <- toString(result0[[percIndex]]["userCmd"])
-        finalName  <- toString(result0[[percIndex]]["name"])
+        final_cmd  <- toString(result0[[perc_index]]["userCmd"])
+        final_name  <- toString(result0[[perc_index]]["name"])
     }
     
   }
 
     if (perc < 100 & perc != 100 & perc > 80) {
     
-    opts$cmds[[finalName]]  <- list.append(opts$cmds[[finalName]], userCmd)
+    opts$cmds[[final_name]]  <- list.append(opts$cmds[[final_name]], user_cmd)
     write_json(opts, "opts.json")
 
-        return(finalName)
+        return(final_name)
 
     }
 
     else if(perc > 50) {
-        return(finalName)
+        return(final_name)
     }
     
 
@@ -90,10 +90,10 @@ source("execute_cmd.R")
 
 main <- function() {
   
-  userInput <- readline()
+  user_input <- readline()
   
-  finalName  <- nerual(userInput)
-  return(execute_cmd(finalName, userInput))
+  final_name  <- nerual(user_input)
+  return(execute_cmd(final_name, user_input))
   
 }
 
